@@ -4,20 +4,6 @@ const About = () => {
   return (
     <div>
         <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
-    <h1>kjabsdjb</h1>
     </div>
   )
 }

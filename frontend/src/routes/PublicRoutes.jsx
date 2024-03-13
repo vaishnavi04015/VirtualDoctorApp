@@ -15,6 +15,7 @@ const PublicRoutes = () => {
             <Route path='/contact' element={<Contact/>}></Route>
             <Route path='/fav' element={<Favorites/>}></Route>
             <Route path='/services' element={<Services/>}></Route>
+            <Route path='/auth' element={<Services/>}></Route>
         </Routes>
     </div>
   )
