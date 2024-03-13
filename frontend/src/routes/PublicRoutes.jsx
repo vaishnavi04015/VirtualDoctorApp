@@ -1,8 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home'
+import Home from '../pages/home/Home'
 import About from '../pages/About'
-import Contact from '../pages/Contact'
+import Contact from '../pages/contact/Contact'
 import Favorites from '../pages/Favorites'
 import Services from '../pages/Services'
 

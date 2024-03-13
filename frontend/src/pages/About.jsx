@@ -2,7 +2,23 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>About</div>
+    <div>
+        <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    <h1>kjabsdjb</h1>
+    </div>
   )
 }
 
