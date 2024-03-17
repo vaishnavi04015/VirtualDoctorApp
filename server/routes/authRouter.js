@@ -1,4 +1,5 @@
 const express = require('express');
+const AuthController = require('../controllers/user-auth-controller')
 const router = express.Router();
 const docSchema= require("../models/doctor-registration-schema.js");
 const cors = require("cors");
@@ -44,4 +45,7 @@ router.get("/docDetails",async(req,res)=>{
 // router.post('/register',AuthController.register)
 
 module.exports = router;
+
+
+
 
