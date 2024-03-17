@@ -5,6 +5,8 @@ import About from '../pages/About'
 import Contact from '../pages/contact/Contact'
 import Favorites from '../pages/Favorites'
 import Services from '../pages/Services'
+import DoctorRegistration from '../pages/DoctorRegistration'
+import DoctorDetails from '../pages/SuperAdmin/DoctorDetails'
 
 const PublicRoutes = () => {
   return (
@@ -16,6 +18,8 @@ const PublicRoutes = () => {
             <Route path='/fav' element={<Favorites/>}></Route>
             <Route path='/services' element={<Services/>}></Route>
             <Route path='/auth' element={<Services/>}></Route>
+            <Route path='/docreg' element={<DoctorRegistration/>}></Route>
+            <Route path="/docdetails" element={<DoctorDetails/>}></Route>
         </Routes>
     </div>
   )
