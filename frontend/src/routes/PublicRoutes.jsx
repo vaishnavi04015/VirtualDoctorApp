@@ -8,6 +8,7 @@ import Services from '../pages/Services'
 import DoctorRegistration from '../pages/DoctorRegistration'
 import DoctorDetails from '../pages/SuperAdmin/DoctorDetails'
 import UserRegistration from '../pages/auth/UserRegistration'
+import DoctorRequestCard from '../pages/SuperAdmin/DoctorRequestCard'
 
 const PublicRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const PublicRoutes = () => {
             <Route path='/docreg' element={<DoctorRegistration/>}></Route>
             <Route path="/docdetails" element={<DoctorDetails/>}></Route>
             <Route path='/userregister' element={<UserRegistration/>}></Route>
+            <Route path="/docrequests" element={<DoctorRequestCard/>}></Route>
         </Routes>
     </div>
   )
