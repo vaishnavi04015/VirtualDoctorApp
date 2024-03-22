@@ -1,8 +1,12 @@
 import React from 'react'
+import DoctorSchedule from '../Doctor/DoctorSchedule'
+
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>Contact
+      <DoctorSchedule/>
+    </div>
   )
 }
 
