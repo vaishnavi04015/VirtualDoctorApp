@@ -45,7 +45,10 @@ const DoctorSchedule = () => {
     const submit=()=>{
         let name="sruti"
         let email="sruti@gmail.com"
-        axios.post("http://localhost:5000/createSchedule",{name,email,date:selectedDate,time:selectedTimes})
+        const formattedTimes = selectedTimes.map((time)=>time.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}))
+        const formattedDate = selectedDate.toLocaleDateString("en-GB");
+        console.log(formattedDate)
+        axios.post("http://localhost:5000/createSchedule",{name,email,date:formattedDate,time:formattedTimes})
         .then((res)=>{
             alert(res.data)
             console.log(res)

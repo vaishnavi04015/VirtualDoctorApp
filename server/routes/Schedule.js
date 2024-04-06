@@ -12,4 +12,11 @@ router.post("/createSchedule",async(req,res)=>{
     await doctorSchedule.create({ name,email,dnt:{date,time}});
     res.send("schedule added");
 })
+
+router.get("/getSchedule/:email",async(req,res)=>{
+    let email=req.params.email;
+    let data=await doctorSchedule.find({email:email})
+    res.send(data)
+})
+
 module.exports = router;
