@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const UserRegistration = () => {
 
@@ -41,7 +43,7 @@ const UserRegistration = () => {
             })
 
             console.log(user);
-            alert("Registered Successfully !")
+            toast.success("Registered Successfully !")
         }
     }
   return (
