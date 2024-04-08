@@ -1,6 +1,7 @@
 const express = require('express');
 const AuthController = require('../controllers/user-auth-controller')
 const router = express.Router();
+const bcrypt = require('bcrypt');
 const fsPromises = require("fs/promises");
 const docSchema= require("../models/doctor-registration-schema.js");
 const cors = require("cors");
@@ -26,10 +27,12 @@ router.post("/docSubmit",upload.fields([{name:"photo"},{name:"license"},{name:"d
   try
   {
     const { name, email,phone,password,expertise,experience,address,gender} = req.body;
+    const hashedPass = await bcrypt.hash(password,10);
+    console.log(hashedPass);
     const license = req.files["license"][0].filename;
     const photo = req.files["photo"][0].filename;
     const degree = req.files["degree"][0].filename;
-    await docSchema.create({ name,email,phone,password,degree,license,expertise,experience,address,gender,photo});
+    await docSchema.create({ name,email,phone,password:hashedPass,degree,license,expertise,experience,address,gender,photo});
     res.send("Data Submitted successfully");
   }
   catch(e)
@@ -59,7 +62,7 @@ router.delete("/docDelete/:email",async(req,res)=>{
   await docSchema.findByIdAndDelete({_id:data._id});
   res.send("Deleted");
 })
-// router.post('/register',AuthController.register)
+
 
 module.exports = router;
 

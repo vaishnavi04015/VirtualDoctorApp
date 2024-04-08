@@ -47,5 +47,25 @@ const userRegister = async (req,res)=>{
     }
 }
 
+const userLogin = async (req,res) =>{
 
-module.exports = {userRegister}
+    let {email,password} = req.body;
+    const isUserExists = await User.findOne({email});
+
+    if (!isUserExists) {
+        console.log("INvalid");
+        return res.status(401).json({msg: "INvalid Credentials"})
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, isUserExists.password)
+    if (!isPasswordValid) {
+        console.log("Incorrect Pas")
+    }
+        console.log("Correct CRED")
+        res.send("COrrect ")
+
+
+}
+
+
+module.exports = {userRegister,userLogin}
