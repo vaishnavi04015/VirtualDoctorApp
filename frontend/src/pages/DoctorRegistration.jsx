@@ -67,6 +67,7 @@ const DoctorRegistration=()=>
           }
         })
         console.log("Successful")
+        alert("Successfully registered")
         }
         else
         {

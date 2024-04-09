@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 
 const doctorSchedule = new mongoose.Schema({
-
-    name: {
-        type: String,
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  dnt: {
+    date: {
+      type: String,
     },
-    email: {
-        type: String,
+    time: {
+      type: Array,
     },
-    dnt: {
-        date: {
-            type: String,
-        },
-        time: {
-            type: Array,
-        }
-    }
-})
+  },
+});
 
 module.exports = mongoose.model('doctorSchedule', doctorSchedule);

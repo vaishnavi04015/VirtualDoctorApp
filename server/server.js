@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require("./routes/authRouter.js")
 const AuthRouter = require('./routes/user-AuthRouter.js')
+const docAuth = require('./routes/doc-Routes.js')
 const schedule = require("./routes/Schedule.js")
 require("./db/conn.js")
 const cors = require('cors');
@@ -17,6 +18,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/auth',AuthRouter)
+app.use('/docauth',docAuth)
 app.use(schedule)
 app.listen(PORT,(e)=>{
     if (!e) {
