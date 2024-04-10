@@ -4,6 +4,7 @@ const AuthRouter = require('./routes/user-AuthRouter.js')
 const docAuth = require('./routes/doc-Routes.js')
 const schedule = require("./routes/Schedule.js")
 require("./db/conn.js")
+var cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
 const PORT = 5000;
@@ -17,6 +18,9 @@ var corsOptions = {
   }
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser())
+
+
 app.use('/auth',AuthRouter)
 app.use('/docauth',docAuth)
 app.use(schedule)

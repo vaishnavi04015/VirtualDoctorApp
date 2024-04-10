@@ -59,9 +59,24 @@ const userLogin = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(password, isUserExists.password);
   if (!isPasswordValid) {
     console.log('Incorrect Pas');
+    res.send("Incorrect pass")
+  }else {
+    const token = jwt.sign(
+      {
+        email,
+      },
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: '1d',
+      }
+    );
+
+    res.status(200).json({
+      msg: 'User Logged In Successfully',
+      token
+    });
   }
-  console.log('Correct CRED');
-  res.send('COrrect ');
+
 };
 
 module.exports = { userRegister, userLogin };

@@ -1,7 +1,9 @@
 const doctor = require('../models/doctor-registration-schema');
+const express = require('express');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const docLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -9,27 +11,28 @@ const docLogin = async (req, res) => {
     const isDoctor = await doctor.findOne({ email });
 
     if (!isDoctor) {
-      res.status(401).json({ msg: 'Doctor dont exists' });
+      res.status(401).json({ msg: 'Doctor does not exist' });
     } else {
-      const isPasscorrect = await bcrypt.compare(password, isDoctor.password);
-      console.log(isPasscorrect);
-      if (!isPasscorrect) {
-        res.send('INVALID CERD');
+      const isPassCorrect = await bcrypt.compare(password, isDoctor.password);
+      console.log(isPassCorrect);
+
+      if (!isPassCorrect) {
+        res.send('Invalid Credentials');
       } else {
         const token = jwt.sign(
           {
-            email: email,
+            email,
           },
           process.env.JWT_SECRET_KEY,
           {
             expiresIn: '1d',
           }
         );
-        const response = {
-          email,
-          token,
-        };
-        res.status(200).json({ msg: 'Doc Successful', response });
+
+        res.status(200).json({
+          msg: 'Doctor Logged In Successfully',
+          token
+        });
       }
     }
   } catch (error) {
