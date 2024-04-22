@@ -11,9 +11,9 @@ const doctorSchedule = new mongoose.Schema({
     date: {
       type: String,
     },
-    time: {
-      type: Array,
-    },
+   time:{
+      type:Array,
+   }
   },
 });
 

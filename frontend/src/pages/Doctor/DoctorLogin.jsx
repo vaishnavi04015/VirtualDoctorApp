@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import {toast} from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 const DoctorLogin = () => {
   const [doctorDetails, setdoctorDetails] = useState({
     email: '',
     password: '',
   });
+
+  let nav = useNavigate();
 
   const LoginInput = (e) => {
     let name = e.target.name;
@@ -65,10 +69,14 @@ const DoctorLogin = () => {
           theme: 'light',
         });
         alert('Login Successful');
-        console.log('Login Response = ', responseData);
-        console.log(' Login TOken   =   ', responseData.token);
-
-        localStorage.setItem("doctorLogin", JSON.stringify(responseData.token));
+        // console.log('Login Response = ', responseData);
+        // console.log(' Login TOken   =   ', responseData.token);
+        // localStorage.setItem("doctorLogin", JSON.stringify(responseData.token));
+        Cookies.set('doctorLogin', responseData.token, { expires: 1 });
+        Cookies.set('email', responseData.email, { expires: 1 });
+        Cookies.set('name', responseData.name, { expires: 1 });
+        nav("/docSchedule")
+        window.location.reload(false);
       }
     } catch (error) {
       console.log(error);

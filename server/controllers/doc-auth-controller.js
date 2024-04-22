@@ -21,7 +21,7 @@ const docLogin = async (req, res) => {
       } else {
         const token = jwt.sign(
           {
-            email,
+            email
           },
           process.env.JWT_SECRET_KEY,
           {
@@ -31,7 +31,9 @@ const docLogin = async (req, res) => {
 
         res.status(200).json({
           msg: 'Doctor Logged In Successfully',
-          token
+          token,
+         email: email,
+         name: isDoctor.name,
         });
       }
     }

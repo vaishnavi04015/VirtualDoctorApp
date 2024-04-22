@@ -7,7 +7,7 @@ import DoctorAppointment from '../User/DoctorAppointment'
 const Contact = () => {
   return (
     <div>Contact
-      <DoctorSchedule/>
+      {/* <DoctorSchedule/> */}
       {/* <DoctorAppointmentCard/> */}
       {/* <DoctorAppointment/> */}
     </div>

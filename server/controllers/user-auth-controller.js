@@ -73,7 +73,9 @@ const userLogin = async (req, res) => {
 
     res.status(200).json({
       msg: 'User Logged In Successfully',
-      token
+      token,
+      email:email,
+      name:isUserExists.userName,
     });
   }
 

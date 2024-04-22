@@ -12,6 +12,8 @@ import DoctorRequestCard from '../pages/SuperAdmin/DoctorRequestCard';
 import BookSchedule from '../pages/User/BookSchedule';
 import DoctorLogin from '../pages/Doctor/DoctorLogin';
 import UserLogin from '../pages/auth/UserLogin';
+import DoctorSchedule from '../pages/Doctor/DoctorSchedule';
+import DoctorAppointment from '../pages/User/DoctorAppointment';
 
 const PublicRoutes = () => {
   return (
@@ -35,6 +37,9 @@ const PublicRoutes = () => {
         <Route path="/docrequests" element={<DoctorRequestCard />}></Route>
         <Route path="/bookAppoitment" element={<BookSchedule />}></Route>
         <Route path="/docdetails" element={<DoctorDetails />}></Route>
+        <Route path="/docSchedule" element={<DoctorSchedule/>}></Route>
+        <Route path="/checkAppoitment" element={<DoctorAppointment/>}></Route>
+
       </Routes>
     </div>
   );

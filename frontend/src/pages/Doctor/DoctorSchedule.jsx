@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays, isWeekend } from "date-fns";
 import axios from "axios"
+import Cookies from 'js-cookie';
 
 const DoctorSchedule = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -13,7 +14,7 @@ const DoctorSchedule = () => {
     };
 
     const handleTimeChange = (time) => {
-        setSelectedTimes([...selectedTimes, time]);
+        setSelectedTimes([...selectedTimes,time]);
     };
 
     const handleRemoveTime = (index) => {
@@ -43,9 +44,12 @@ const DoctorSchedule = () => {
     };
 
     const submit=()=>{
-        let name="sruti"
-        let email="sruti@gmail.com"
-        const formattedTimes = selectedTimes.map((time)=>time.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}))
+        let name=Cookies.get('name')
+        let email=Cookies.get('email')
+        const formattedTimes = selectedTimes.map((time) => ({
+            t: time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+            booked: false,
+        }));
         const formattedDate = selectedDate.toLocaleDateString("en-GB");
         console.log(formattedDate)
         axios.post("http://localhost:5000/createSchedule",{name,email,date:formattedDate,time:formattedTimes})
@@ -54,6 +58,8 @@ const DoctorSchedule = () => {
             console.log(res)
         })
         .catch((e)=>console.log(e))
+        setSelectedDate(null);
+        setSelectedTimes([]);
     }
 
     return (

@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 const UserLogin = () => {
   const [loginUser, setLoginUser] = useState({
     email: '',
     password: '',
   });
+
+  let nav = useNavigate();
 
   const LoginInput = (e) => {
     let name = e.target.name;
@@ -28,6 +32,7 @@ const UserLogin = () => {
         body: JSON.stringify(loginUser),
       });
 
+      console.log(response)
       const responseData = await response.json();
 
       if (!response.ok) {
@@ -65,10 +70,12 @@ const UserLogin = () => {
           theme: 'light',
         });
         alert('Login Successful');
-        console.log('Login Response = ', responseData);
-        console.log(' Login TOken   =   ', responseData.token);
+        Cookies.set('userToken', responseData.token, { expires: 1 });
+        Cookies.set('email', responseData.email, { expires: 1 });
+        Cookies.set('name', responseData.name, { expires: 1 });
 
-        localStorage.setItem('userToken', responseData.token);
+        nav("/checkAppoitment")
+        window.location.reload(false);
       }
     } catch (error) {
       console.log('Error Response ', error);
