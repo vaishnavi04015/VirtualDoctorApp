@@ -14,9 +14,9 @@ const DoctorAppointment = () =>{
 
     return(<div>
         {
-            data?data.map((temp)=>{if(temp.verified==true){
+            data?data.map((temp,index)=>{if(temp.verified==true){
                 return (
-                    <DoctorAppointmentCard name={temp.name} expertise={temp.expertise} experience={temp.experience} email={temp.email} phone={temp.phone} photo={temp.photo} />
+                    <DoctorAppointmentCard key={index} name={temp.name} expertise={temp.expertise} experience={temp.experience} email={temp.email} phone={temp.phone} photo={temp.photo} />
             )}}) : <p>Data is loading</p>
         }
     </div>)
