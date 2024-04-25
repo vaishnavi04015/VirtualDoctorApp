@@ -7,7 +7,7 @@ const DoctorAppointmentCard=(props)=>{
         nav("/bookAppoitment",{state:{email:props.email}})
     }
     return(<div>
-        <Card maxW='sm'>
+        <Card maxW='sm' className="m-8">
             <CardBody>
                 <Image
                 src={`./public/Doctordetails/${props.photo}`}

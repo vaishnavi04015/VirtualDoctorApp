@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
+import { format } from "date-fns";
 
 const BookSchedule = () => {
     let k = useLocation();
@@ -22,8 +23,27 @@ const BookSchedule = () => {
                     return dateA.localeCompare(dateB);
                 });
                 const today = new Date().toLocaleDateString("en-GB");
-                const filteredData = sortedData.filter((temp) => temp.dnt.date >= today);
-                setData(filteredData);
+                const filteredData = sortedData.filter((temp) => temp.dnt.date >= today);  // filter from current date
+                const sortedDateTime = filteredData.filter((temp) => {          // filter from current time of today
+                    if (temp.dnt.date === today) {
+                        const currentTime = new Date();
+                        const currentHours = currentTime.getHours();
+                        const currentMinutes = currentTime.getMinutes();
+                        const currentTotalMinutes = currentHours * 60 + currentMinutes;
+                
+                        temp.dnt.time = temp.dnt.time.filter((time) => {
+                            const [hours, minutes] = time.t.split(':').map(Number);
+                            const totalMinutes = hours * 60 + minutes;
+                            return totalMinutes >= currentTotalMinutes;
+                        });
+                
+                        return temp;
+                    } else {
+                        return temp;
+                    }
+                });
+                
+                setData(sortedDateTime);
             })
             .catch((e) => console.log(e));
     }
@@ -41,6 +61,7 @@ const BookSchedule = () => {
                     console.log(res.data)
                 })
                 .catch((e) => console.log(e))
+                alert("booked succefully")
         } else {
             alert("Select your booking")
         }
@@ -48,28 +69,29 @@ const BookSchedule = () => {
 
     const handleBooking = (index, date, time) => {
         setColor((temp) => temp === index ? null : index);
-        setDate(date);
-        setTime(time);
-        console.log(date);
-        console.log(time);
+        setDate((temp) => temp === date ? "" : date);
+        setTime((temp) => temp === time ? "" : time);
     }
+    
 
     useEffect(() => { getData() }, [])
 
     return (
-        <div>
-            {data && data.length > 0 ? data.map((temp, dayIndex) => (
+        <div className="mt-8 ml-10">
+            {data && data.length > 0 ? data.map((data, dayIndex) => (
                 <div key={dayIndex} className="mb-4">
-                    <p className="font-semibold mb-2">{temp.dnt.date}</p>
+                    <p className="font-semibold text-lg mb-2">{data.dnt.date}</p>
                     <div className="flex flex-wrap">
-                        {temp.dnt.time.map((time, timeIndex) => {
+                        {data.dnt.time
+                        .sort((a, b) => a.t.localeCompare(b.t))    // sort in acsending order of time slots
+                        .map((time, timeIndex) => {
                             const index = dayIndex.toString() + timeIndex.toString();
                             return (
                                 <button
                                     key={index}
                                     disabled={time.booked}
                                     className={`m-3 px-4 py-2 rounded ${!time.booked ? (color === index ? "bg-green-500 text-white hover:bg-green-600" : "bg-blue-500 text-white hover:bg-blue-600") : "bg-gray-300 cursor-not-allowed"}`}
-                                    onClick={() => handleBooking(index, temp.dnt.date, time.t)}
+                                    onClick={() => handleBooking(index, data.dnt.date, time.t)}
                                 >
                                     {time.t}
                                 </button>

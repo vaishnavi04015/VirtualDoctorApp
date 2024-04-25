@@ -38,7 +38,7 @@ import {
         >
             {props.name}
         </Button>
-        <Modal isCentered isOpen={isOpen} onClose={onClose} className="w-[90%]">
+        <Modal isCentered isOpen={isOpen} onClose={onClose} className=" w-[90%]">
           {overlay}
           <ModalContent>
             <ModalCloseButton />

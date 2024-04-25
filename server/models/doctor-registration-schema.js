@@ -38,6 +38,28 @@ const doctorSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  reviews:[
+    {
+      userName: {
+        type : String,
+      },
+      userEmail: {
+        type : String
+      },
+      date : {
+        type : String,
+      },
+      time : {
+        type : String,
+      },
+      rating : {
+        type : Number,
+      },
+      review : {
+        type : String,
+      }
+    }
+  ]
 });
 
 const doctor = mongoose.model('doctor', doctorSchema);

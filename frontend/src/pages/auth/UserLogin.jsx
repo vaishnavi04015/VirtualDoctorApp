@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
+
 const UserLogin = () => {
   const [loginUser, setLoginUser] = useState({
     email: '',
@@ -19,10 +20,10 @@ const UserLogin = () => {
       [name]: value,
     });
   };
+
   const handleLoginForm = async (e) => {
     try {
       e.preventDefault();
-      console.log(loginUser);
 
       const response = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
@@ -32,7 +33,6 @@ const UserLogin = () => {
         body: JSON.stringify(loginUser),
       });
 
-      console.log(response)
       const responseData = await response.json();
 
       if (!response.ok) {
@@ -46,8 +46,7 @@ const UserLogin = () => {
           progress: undefined,
           theme: 'light',
         });
-        console.log('Response IS False');
-        console.log(response.ok);
+
         toast.warn(responseData.message, {
           position: 'top-right',
           autoClose: 3000,
@@ -69,7 +68,6 @@ const UserLogin = () => {
           progress: undefined,
           theme: 'light',
         });
-        alert('Login Successful');
         Cookies.set('userToken', responseData.token, { expires: 1 });
         Cookies.set('email', responseData.email, { expires: 1 });
         Cookies.set('name', responseData.name, { expires: 1 });
@@ -81,10 +79,12 @@ const UserLogin = () => {
       console.log('Error Response ', error);
     }
   };
+
   return (
-    <div>
-      <form onSubmit={handleLoginForm}>
-        <label>Email</label>
+    <div className="flex flex-col items-center justify-center mt-[8%]">
+      <h1 className="font-bold text-4xl mb-6">User Login</h1>
+      <form onSubmit={handleLoginForm} className="w-64">
+        <label className="block mb-2">Email:</label>
         <input
           type="email"
           required
@@ -92,9 +92,9 @@ const UserLogin = () => {
           placeholder="Email ID"
           value={loginUser.email}
           onChange={LoginInput}
-        />{' '}
-        <br></br>
-        <label>Password</label>
+          className="w-full p-2 border border-gray-300 rounded mb-4"
+        />
+        <label className="block mb-2">Password:</label>
         <input
           type="password"
           required
@@ -102,9 +102,11 @@ const UserLogin = () => {
           placeholder="Password"
           value={loginUser.password}
           onChange={LoginInput}
-        />{' '}
-        <br></br>
-        <button type="submit"> Login !</button>
+          className="w-full p-2 border border-gray-300 rounded mb-4"
+        />
+        <button type="submit" className="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+          Login
+        </button>
       </form>
     </div>
   );

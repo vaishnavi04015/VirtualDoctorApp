@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
+
 const DoctorLogin = () => {
-  const [doctorDetails, setdoctorDetails] = useState({
+  const [doctorDetails, setDoctorDetails] = useState({
     email: '',
     password: '',
   });
 
-  let nav = useNavigate();
+  const nav = useNavigate();
 
-  const LoginInput = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    setdoctorDetails({
+  const handleLoginInput = (e) => {
+    const { name, value } = e.target;
+    setDoctorDetails({
       ...doctorDetails,
       [name]: value,
     });
   };
 
-  const handleDocLogin = async (e) => {
+  const handleDoctorLogin = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      console.log(doctorDetails);
-
       const response = await fetch('http://localhost:5000/docauth/doclogin', {
         method: 'POST',
         headers: {
@@ -35,19 +33,7 @@ const DoctorLogin = () => {
 
       const responseData = await response.json();
       if (!response.ok) {
-        toast.warn('Incorrect Email OR Password', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-        console.log('Response IS False');
-        console.log(response.ok);
-        toast.warn(responseData.message, {
+        toast.warn('Incorrect Email or Password', {
           position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
@@ -68,50 +54,49 @@ const DoctorLogin = () => {
           progress: undefined,
           theme: 'light',
         });
-        alert('Login Successful');
-        // console.log('Login Response = ', responseData);
-        // console.log(' Login TOken   =   ', responseData.token);
-        // localStorage.setItem("doctorLogin", JSON.stringify(responseData.token));
         Cookies.set('doctorLogin', responseData.token, { expires: 1 });
         Cookies.set('email', responseData.email, { expires: 1 });
         Cookies.set('name', responseData.name, { expires: 1 });
-        nav("/docSchedule")
+        nav("/");
         window.location.reload(false);
       }
     } catch (error) {
-      console.log(error);
+      console.error('Error:', error);
     }
   };
+
   return (
-    <div>
-      <form onSubmit={handleDocLogin}>
-        <div className="mb-2">
-          <label htmlFor="email">Email</label>
+    <div className="flex flex-col items-center justify-center mt-[8%]">
+      <h1 className="font-bold text-4xl mb-6">Doctor Login</h1>
+      <form onSubmit={handleDoctorLogin} className="w-64">
+        <div className="mb-4">
+          <label htmlFor="email" className="block mb-2">Email:</label>
           <input
-            onChange={LoginInput}
-            className="ml-3 border-2 border-slate-400 rounded-md"
             type="text"
             id="email"
             name="email"
+            value={doctorDetails.email}
+            onChange={handleLoginInput}
+            className="w-full p-2 border border-gray-300 rounded"
+            placeholder="Email"
             required
-            placeholder=" Email"
           />
         </div>
-
-        <div className="mb-2">
-          <label htmlFor="password">Password</label>
+        <div className="mb-4">
+          <label htmlFor="password" className="block mb-2">Password:</label>
           <input
-            onChange={LoginInput}
-            className="ml-3 border-2 border-slate-400 rounded-md"
             type="password"
             id="password"
             name="password"
+            value={doctorDetails.password}
+            onChange={handleLoginInput}
+            className="w-full p-2 border border-gray-300 rounded"
+            placeholder="Password"
             required
-            placeholder=" ******"
           />
         </div>
-        <button className="p-2 border-2 border-emerald-600" type="submit">
-          Submit
+        <button type="submit" className="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+          Login
         </button>
       </form>
     </div>

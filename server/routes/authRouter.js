@@ -23,8 +23,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post(
-  '/docSubmit',
+router.post('/docSubmit',
   upload.fields([{ name: 'photo' }, { name: 'license' }, { name: 'degree' }]),
   async (req, res) => {
     try {
@@ -38,25 +37,34 @@ router.post(
         address,
         gender,
       } = req.body;
-      const hashedPass = await bcrypt.hash(password, 10);
-      console.log(hashedPass);
-      const license = req.files['license'][0].filename;
-      const photo = req.files['photo'][0].filename;
-      const degree = req.files['degree'][0].filename;
-      await docSchema.create({
-        name,
-        email,
-        phone,
-        password: hashedPass,
-        degree,
-        license,
-        expertise,
-        experience,
-        address,
-        gender,
-        photo,
-      });
-      res.send('Data Submitted successfully');
+      let data = await docSchema.find({email});
+      console.log(data);
+      if(data.length==0)
+      {
+        const hashedPass = await bcrypt.hash(password, 10);
+        console.log(hashedPass);
+        const license = req.files['license'][0].filename;
+        const photo = req.files['photo'][0].filename;
+        const degree = req.files['degree'][0].filename;
+        await docSchema.create({
+          name,
+          email,
+          phone,
+          password: hashedPass,
+          degree,
+          license,
+          expertise,
+          experience,
+          address,
+          gender,
+          photo,
+        });
+        res.send('Data Submitted successfully');
+      }
+      else
+      {
+        res.send("doctor already exists")
+      }
     } catch (e) {
       console.log(e);
     }
@@ -68,6 +76,13 @@ router.get('/docDetails', async (req, res) => {
   res.send(data);
 });
 
+router.get('/getDocData/:email', async (req, res) => {
+  let {email} = req.params;
+  let data = await docSchema.findOne({email});
+  res.send(data);
+});
+
+
 router.patch('/docVerfication', async (req, res) => {
   let { email } = req.body;
   let data = await docSchema.findOne({ email: email });
@@ -76,6 +91,21 @@ router.patch('/docVerfication', async (req, res) => {
     { $set: { verified: true } }
   );
   res.send('Accepted');
+});
+
+router.patch('/reviews', async (req, res) => {
+  let {reviews, doctorEmail} = req.body;
+  let data = await docSchema.findOne({ email: doctorEmail });
+  if(data)
+  {
+    data.reviews = [...data.reviews,reviews];
+    await data.save();
+    res.send('review added');
+  }
+  else
+  {
+    res.send('please enter vaild doctor email');
+  }
 });
 
 router.delete('/docDelete/:email', async (req, res) => {

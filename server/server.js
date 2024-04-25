@@ -4,6 +4,7 @@ const AuthRouter = require('./routes/user-AuthRouter.js')
 const docAuth = require('./routes/doc-Routes.js')
 const schedule = require("./routes/Schedule.js")
 const userBookings = require('./routes/userBookingRoutes.js');
+const prescription = require('./routes/PrescriptionRoutes.js');
 require("./db/conn.js")
 var cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -25,6 +26,7 @@ app.use(cookieParser())
 app.use('/auth',AuthRouter)
 app.use('/docauth',docAuth)
 app.use('/Booking',userBookings)
+app.use('/pres',prescription)
 app.use(schedule)
 app.listen(PORT,(e)=>{
     if (!e) {
