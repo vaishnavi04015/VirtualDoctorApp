@@ -4,7 +4,7 @@ const DoctorAppointmentCard=(props)=>{
     let nav = useNavigate();
 
     const BookAppointment = ()=>{
-        nav("/bookAppoitment",{state:{email:props.email}})
+        nav("/bookAppoitment",{state:{email:props.email,docName:props.name,expertise:props.expertise}})
     }
     return(<div>
         <Card maxW='sm' className="m-8">

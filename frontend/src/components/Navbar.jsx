@@ -6,6 +6,8 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 
 
+import MyBookingsMenu from '../pages/User/MyBookingsMenu';
+import DoctorBookingsMenu from '../pages/Doctor/DoctorBookingsMenu';
 const Navbar = () => {
   const  docToken = Cookies.get('doctorLogin');
   const userToken = Cookies.get('userToken');
@@ -49,7 +51,7 @@ const Navbar = () => {
                   {' '}
                   <NavLink to="/about">About</NavLink>
                 </li>
-                <li>
+                  <li>
                   {' '}
                   <NavLink to="/docrequests">Doctor Requests</NavLink>
                 </li>
@@ -76,6 +78,10 @@ const Navbar = () => {
                 <li>
                   {' '}
                   <NavLink to="/docSchedule">Schedules</NavLink>
+                </li>
+                <li>
+                  {' '}
+                  <NavLink><DoctorBookingsMenu/></NavLink>
                 </li>
                 <li>
                   {' '}
@@ -139,6 +145,10 @@ const Navbar = () => {
                 </li>
                 <li>
                   {' '}
+                <NavLink><MyBookingsMenu/></NavLink>
+                </li>
+                <li>
+                  {' '}
                   <NavLink to="/presCard">Prescription</NavLink>
                 </li>
                 <li>
@@ -172,18 +182,6 @@ const Navbar = () => {
                   {' '}
                   <NavLink to="/login">Login</NavLink>
                 </li>
-                {/* <li>
-                  <NavLink to="/docreg">Doctor Registration</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/docLogin">Doctor Login</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/userregister">User</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/userlogin">User Login</NavLink>
-                </li> */}
                 <li>
                   {' '}
                   <NavLink to="/contact">Contact</NavLink>

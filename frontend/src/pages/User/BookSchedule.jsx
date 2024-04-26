@@ -1,56 +1,62 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { format } from "date-fns";
+import { v4 as uuidv4 } from 'uuid';
 
 const BookSchedule = () => {
     let k = useLocation();
-    let { email } = k.state;
+    let { email,docName,expertise } = k.state;
     const UserEmail = Cookies.get('email');
     const name = Cookies.get('name');
     let [data, setData] = useState([]);
     let [color, setColor] = useState();
     let [date, setDate] = useState("");
     let [time, setTime] = useState("");
+    const nav= useNavigate();
 
     const getData = () => {
+       if(email!=null)
+       {
         axios.get(`http://localhost:5000/getSchedule/${email}`)
-            .then((res) => {
-                const sortedData = res.data.sort((a, b) => {
-                    const dateA = a.dnt.date.split('/').reverse().join('/');
-                    const dateB = b.dnt.date.split('/').reverse().join('/');
-                    return dateA.localeCompare(dateB);
-                });
-                const today = new Date().toLocaleDateString("en-GB");
-                const filteredData = sortedData.filter((temp) => temp.dnt.date >= today);  // filter from current date
-                const sortedDateTime = filteredData.filter((temp) => {          // filter from current time of today
-                    if (temp.dnt.date === today) {
-                        const currentTime = new Date();
-                        const currentHours = currentTime.getHours();
-                        const currentMinutes = currentTime.getMinutes();
-                        const currentTotalMinutes = currentHours * 60 + currentMinutes;
-                
-                        temp.dnt.time = temp.dnt.time.filter((time) => {
-                            const [hours, minutes] = time.t.split(':').map(Number);
-                            const totalMinutes = hours * 60 + minutes;
-                            return totalMinutes >= currentTotalMinutes;
-                        });
-                
-                        return temp;
-                    } else {
-                        return temp;
-                    }
-                });
-                
-                setData(sortedDateTime);
-            })
-            .catch((e) => console.log(e));
+        .then((res) => {
+            const sortedData = res.data.sort((a, b) => {
+                const dateA = a.dnt.date.split('/').reverse().join('/');
+                const dateB = b.dnt.date.split('/').reverse().join('/');
+                return dateA.localeCompare(dateB);
+            });
+            const today = new Date().toLocaleDateString("en-GB");
+            const filteredData = sortedData.filter((temp) => temp.dnt.date >= today);  // filter from current date
+            const sortedDateTime = filteredData.filter((temp) => {          // filter from current time of today
+                if (temp.dnt.date === today) {
+                    const currentTime = new Date();
+                    const currentHours = currentTime.getHours();
+                    const currentMinutes = currentTime.getMinutes();
+                    const currentTotalMinutes = currentHours * 60 + currentMinutes;
+            
+                    temp.dnt.time = temp.dnt.time.filter((time) => {
+                        const [hours, minutes] = time.t.split(':').map(Number);
+                        const totalMinutes = hours * 60 + minutes;
+                        return totalMinutes >= currentTotalMinutes;
+                    });
+            
+                    return temp;
+                } else {
+                    return temp;
+                }
+            });
+            
+            setData(sortedDateTime);
+        })
+        .catch((e) => console.log(e));
+       }
     }
 
     const userBooking = () => {
         if (date !== "" && time !== "") {
-            axios.post(`http://localhost:5000/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time })
+            let uid= uuidv4();
+            axios.post(`http://localhost:5000/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time,meetingId:uid,docName,expertise,sta:"Upcomming",reason:"-" })
                 .then((res) => {
                     console.log(res.data)
                 })
@@ -62,6 +68,7 @@ const BookSchedule = () => {
                 })
                 .catch((e) => console.log(e))
                 alert("booked succefully")
+                nav("/bookingDone");
         } else {
             alert("Select your booking")
         }

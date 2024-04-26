@@ -20,6 +20,12 @@ import PrescriptionDisplay from '../pages/User/PrescriptionDisplay';
 import Registration from '../components/Registration';
 import Login from '../components/Login';
 import ReviewsDisplay from '../pages/User/ReviewsDisplay';
+import SuccessfulBooking from '../pages/User/SuccessfulBooking';
+import YourBookings from '../pages/User/YourBookings';
+import UserRoom from '../pages/User/UserRoom';
+import HistoryPage from '../pages/User/History';
+import DoctorBooking from '../pages/Doctor/DoctorBookings';
+import DoctorHistory from '../pages/Doctor/DoctorHistory';
 
 const PublicRoutes = () => {
   return (
@@ -52,6 +58,12 @@ const PublicRoutes = () => {
         <Route path="/presDisplay" element={<PrescriptionDisplay/>}></Route>
         <Route path="/reviewDisplay" element={<ReviewsDisplay/>}></Route>
 
+        <Route path="/bookingDone" element={<SuccessfulBooking/>}></Route>
+        <Route path="/myBookings" element={<YourBookings/>}></Route>
+        <Route path="/userRoom/:roomId" element={<UserRoom/>}></Route>
+       <Route path="/history" element={<HistoryPage/>}></Route>
+       <Route path="/doctorBookings" element={<DoctorBooking/>}></Route>
+       <Route path="/doctorHistory" element={<DoctorHistory/>}></Route>
       </Routes>
     </>
   );

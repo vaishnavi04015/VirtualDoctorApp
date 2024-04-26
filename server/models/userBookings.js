@@ -18,6 +18,21 @@ const userBookings = new mongoose.Schema({
       type:String,
     }
   },
+  meetingId:{
+    type:String,
+  },
+  docName:{
+    type:String,
+  },
+  expertise:{
+    type:String,
+  },
+  sta:{
+    type:String,
+  },
+  reason:{
+    type:String
+  },
 });
 
 module.exports = mongoose.model('userBookings', userBookings);
