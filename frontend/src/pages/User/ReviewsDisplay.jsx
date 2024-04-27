@@ -50,9 +50,6 @@ const ReviewsDisplay = () => {
             (
                 <p className="text-start text-gray-500 m-8 text-2xl">No Reviews Yet</p>
             )}
-            <div className="border-4 rounded-md py-1 px-2 w-[45%] m-8">
-                <FeedBackForm/>
-            </div>
         </div>
     );
 };

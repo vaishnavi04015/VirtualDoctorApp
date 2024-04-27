@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, ButtonGroup, Button, Image, Text } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, Stack, Heading, Image, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar , FaStarHalfAlt } from "react-icons/fa"
 import { AiOutlineStar} from "react-icons/ai"

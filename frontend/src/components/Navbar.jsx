@@ -4,6 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { CiSearch } from 'react-icons/ci';
 import Cookies from 'js-cookie';
 import axios from "axios";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
+import  "../App.css";
+import { Link } from 'react-router-dom';
 
 
 import MyBookingsMenu from '../pages/User/MyBookingsMenu';
@@ -81,15 +89,23 @@ const Navbar = () => {
                 </li>
                 <li>
                   {' '}
-                  <NavLink><DoctorBookingsMenu/></NavLink>
+                  <Menu isLazy className="DoctorMenuItem">
+                    <MenuButton >Appointments</MenuButton>
+                    <MenuList className="DoctorMenuItem">
+                    <Link to="/doctorBookings"><MenuItem className="DoctorMenuItem">My Appointments</MenuItem></Link> 
+                    <Link to="/doctorHistory"><MenuItem>History</MenuItem></Link> 
+                    </MenuList>
+                  </Menu>
                 </li>
                 <li>
                   {' '}
-                  <NavLink to="/pres">Add Prescription</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/presCard">View Prescription</NavLink>
+                  <Menu isLazy>
+                  <MenuButton >Prescription</MenuButton>
+                  <MenuList>
+                  <Link to="/pres"><MenuItem >Add Prescription</MenuItem></Link> 
+                  <Link to="/presCard"><MenuItem>View Prescription</MenuItem></Link> 
+                  </MenuList>
+                </Menu>
                 </li>
                 <li>
                   {' '}
@@ -143,9 +159,19 @@ const Navbar = () => {
                   {' '}
                   <NavLink to="/checkAppoitment">Book Appointment</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   {' '}
                 <NavLink><MyBookingsMenu/></NavLink>
+                </li> */}
+                <li>
+                  {' '}
+                  <Menu isLazy>
+                  <MenuButton >Bookings</MenuButton>
+                  <MenuList>
+                  <Link to="/myBookings"><MenuItem >My Bookings</MenuItem></Link> 
+                  <Link to="/history"><MenuItem>History</MenuItem></Link> 
+                  </MenuList>
+                </Menu>
                 </li>
                 <li>
                   {' '}

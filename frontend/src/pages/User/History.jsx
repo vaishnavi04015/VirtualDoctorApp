@@ -11,6 +11,7 @@ import {
     TableContainer,
   } from '@chakra-ui/react';
   import Filter from "./Filter";
+import FeedBackModal from "./FeedBackModal";
 
 const HistoryPage=()=>
 {
@@ -106,7 +107,7 @@ const HistoryPage=()=>
                         <Td>{temp.dnt.time}</Td>
                         <Td>{temp.sta}</Td>
                         <Td>{temp.reason}</Td>
-                        <Td><button style={{backgroundColor:"bisque"}}>FeedBack</button></Td>
+                        <Td><FeedBackModal/></Td>
                      </Tr>
                     }
                     else
