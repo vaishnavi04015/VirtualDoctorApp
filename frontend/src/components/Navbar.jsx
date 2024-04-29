@@ -59,7 +59,11 @@ const Navbar = () => {
                   {' '}
                   <NavLink to="/about">About</NavLink>
                 </li>
-                  <li>
+                <li>
+                  {' '}
+                  <NavLink to="/services">Services</NavLink>
+                </li>
+                <li>
                   {' '}
                   <NavLink to="/docrequests">Doctor Requests</NavLink>
                 </li>
