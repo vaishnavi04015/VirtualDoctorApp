@@ -3,225 +3,240 @@ import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { CiSearch } from 'react-icons/ci';
 import Cookies from 'js-cookie';
-import axios from "axios";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from '@chakra-ui/react';
-import  "../App.css";
+import axios from 'axios';
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import '../App.css';
 import { Link } from 'react-router-dom';
 
-
+import Logo from '../assets/AppLogo.jpg';
 import MyBookingsMenu from '../pages/User/MyBookingsMenu';
 import DoctorBookingsMenu from '../pages/Doctor/DoctorBookingsMenu';
 const Navbar = () => {
-  const  docToken = Cookies.get('doctorLogin');
+  const docToken = Cookies.get('doctorLogin');
   const userToken = Cookies.get('userToken');
-  const adminToken=Cookies.get('adminToken');
+  const adminToken = Cookies.get('adminToken');
   let nav = useNavigate();
 
   const [isVerified, setVerified] = useState();
 
-  useEffect(()=>{
-    if(docToken !== undefined)
-    {
+  useEffect(() => {
+    if (docToken !== undefined) {
       const email = Cookies.get('email');
-      axios.get(`http://localhost:5000/getDocData/${email}`)
-        .then((res)=>{
+      axios
+        .get(`http://localhost:5000/getDocData/${email}`)
+        .then((res) => {
           setVerified(res.data.verified);
         })
-        .catch((e)=>console.log(e))
+        .catch((e) => console.log(e));
     }
-  },[docToken])
-  const handleLogout=(token)=>
-  {
+  }, [docToken]);
+  const handleLogout = (token) => {
     Cookies.remove(token);
     Cookies.remove('name');
     Cookies.remove('email');
-    nav("/");
+    nav('/');
     window.location.reload(false);
-  }
+  };
   return (
     <div>
       <div className="bg-slate-700 text-slate-100 font-semibold text-xl h-18 p-5 align-middle text-center sticky">
         <ul className="flex relative justify-around text-center">
-          <h1 className="relative align-middle w-1/6">24/7 Virtual Care</h1>
-          {
-            adminToken!=null ?
-              <div className="flex relative space-x-6 text-center ">
-                <li>
-                  {' '}
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/services">Services</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/docrequests">Doctor Requests</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink  onClick={()=>handleLogout('adminToken')}>Logout</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </div>
-            :  
-            docToken!=null && isVerified ?
-              <div className="flex relative space-x-6 text-center ">
-                <li>
-                  {' '}
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/services">Services</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/docSchedule">Schedules</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <Menu isLazy className="DoctorMenuItem">
-                    <MenuButton >Appointments</MenuButton>
-                    <MenuList className="DoctorMenuItem">
-                    <Link to="/doctorBookings"><MenuItem className="DoctorMenuItem">My Appointments</MenuItem></Link> 
-                    <Link to="/doctorHistory"><MenuItem>History</MenuItem></Link> 
-                    </MenuList>
-                  </Menu>
-                </li>
-                <li>
-                  {' '}
-                  <Menu isLazy>
-                  <MenuButton >Prescription</MenuButton>
-                  <MenuList>
-                  <Link to="/pres"><MenuItem >Add Prescription</MenuItem></Link> 
-                  <Link to="/presCard"><MenuItem>View Prescription</MenuItem></Link> 
+          <div className=" w-40 ">
+            <img src={Logo} alt="24/7 Virtual Care" className="w-full" />
+          </div>
+
+          {adminToken != null ? (
+            <div className="flex relative space-x-6 text-center ">
+              <li>
+                {' '}
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/docrequests">Doctor Requests</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink onClick={() => handleLogout('adminToken')}>
+                  Logout
+                </NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </div>
+          ) : docToken != null && isVerified ? (
+            <div className="flex relative space-x-6 text-center ">
+              <li>
+                {' '}
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/docSchedule">Schedules</NavLink>
+              </li>
+              <li>
+                {' '}
+                <Menu isLazy className="DoctorMenuItem">
+                  <MenuButton>Appointments</MenuButton>
+                  <MenuList className="DoctorMenuItem">
+                    <Link to="/doctorBookings">
+                      <MenuItem className="DoctorMenuItem">
+                        My Appointments
+                      </MenuItem>
+                    </Link>
+                    <Link to="/doctorHistory">
+                      <MenuItem>History</MenuItem>
+                    </Link>
                   </MenuList>
                 </Menu>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink  onClick={()=>handleLogout('doctorLogin')}>Logout</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </div>
-            :
-            docToken!=null && !isVerified ?
-              <div className="flex relative space-x-6 text-center ">
-                <li>
-                  {' '}
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/services">Services</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink  onClick={()=>handleLogout('doctorLogin')}>Logout</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </div>
-            :
-            userToken!=null?
-              <div className="flex relative space-x-6 text-center ">
-                <li>
-                  {' '}
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/services">Services</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/checkAppoitment">Book Appointment</NavLink>
-                </li>
-                {/* <li>
+              </li>
+              <li>
+                {' '}
+                <Menu isLazy>
+                  <MenuButton>Prescription</MenuButton>
+                  <MenuList>
+                    <Link to="/pres">
+                      <MenuItem>Add Prescription</MenuItem>
+                    </Link>
+                    <Link to="/presCard">
+                      <MenuItem>View Prescription</MenuItem>
+                    </Link>
+                  </MenuList>
+                </Menu>
+              </li>
+              <li>
+                {' '}
+                <NavLink onClick={() => handleLogout('doctorLogin')}>
+                  Logout
+                </NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </div>
+          ) : docToken != null && !isVerified ? (
+            <div className="flex relative space-x-6 text-center ">
+              <li>
+                {' '}
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink onClick={() => handleLogout('doctorLogin')}>
+                  Logout
+                </NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </div>
+          ) : userToken != null ? (
+            <div className="flex relative space-x-6 text-center ">
+              <li>
+                {' '}
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/checkAppoitment">Book Appointment</NavLink>
+              </li>
+              {/* <li>
                   {' '}
                 <NavLink><MyBookingsMenu/></NavLink>
                 </li> */}
-                <li>
-                  {' '}
-                  <Menu isLazy>
-                  <MenuButton >Bookings</MenuButton>
+              <li>
+                {' '}
+                <Menu isLazy>
+                  <MenuButton>Bookings</MenuButton>
                   <MenuList>
-                  <Link to="/myBookings"><MenuItem >My Bookings</MenuItem></Link> 
-                  <Link to="/history"><MenuItem>History</MenuItem></Link> 
+                    <Link to="/myBookings">
+                      <MenuItem>My Bookings</MenuItem>
+                    </Link>
+                    <Link to="/history">
+                      <MenuItem>History</MenuItem>
+                    </Link>
                   </MenuList>
                 </Menu>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/presCard">Prescription</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink  onClick={()=>handleLogout('userToken')}>Logout</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </div>
-            :
-              <div className="flex relative space-x-6 text-center ">
-                <li>
-                  {' '}
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/services">Services</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/register">Registration</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/login">Login</NavLink>
-                </li>
-                <li>
-                  {' '}
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </div>
-          }
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/presCard">Prescription</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink onClick={() => handleLogout('userToken')}>
+                  Logout
+                </NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </div>
+          ) : (
+            <div className="flex relative space-x-6 text-center ">
+              <li>
+                {' '}
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/services">Services</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/register">Registration</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/login">Login</NavLink>
+              </li>
+              <li>
+                {' '}
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </div>
+          )}
         </ul>
       </div>
     </div>
