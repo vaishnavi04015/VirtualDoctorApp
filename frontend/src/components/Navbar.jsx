@@ -89,6 +89,10 @@ const Navbar = () => {
                 </li>
                 <li>
                   {' '}
+                  <NavLink to="/services">Services</NavLink>
+                </li>
+                <li>
+                  {' '}
                   <NavLink to="/docSchedule">Schedules</NavLink>
                 </li>
                 <li>

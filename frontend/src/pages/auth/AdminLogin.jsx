@@ -11,7 +11,7 @@ const AdminLogin = () => {
     e.preventDefault();
     if (Name === "admin" && Pass === "admin123") {
       Cookies.set("adminToken", "token", { expires: 1 });
-      nav("/docrequests");
+      nav("/");
       window.location.reload(false);
     }
   };

@@ -24,7 +24,7 @@ const DoctorSchedule = () => {
     };
 
     const minDate = new Date();
-    const maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 1, 0);
+    // const maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 1, 0);
 
     const timePickerProps = {
         showTimeSelect: true,
@@ -70,7 +70,7 @@ const DoctorSchedule = () => {
                         onChange={handleDateChange}
                         dateFormat="dd/MM/yyyy"
                         minDate={minDate}
-                        maxDate={maxDate}
+                        // maxDate={maxDate}
                         className="border-2 m-3 p-2 rounded"
                     />
                 </div>

@@ -13,6 +13,7 @@ const DoctorAppointmentCard=(props)=>{
                 src={`./public/Doctordetails/${props.photo}`}
                 alt={props.name}
                 borderRadius='lg'
+                className="h-72 w-full"
                 />
                 <Stack mt='6' spacing='3'>
                 <Heading size='md' className='text-center'>{props.name}</Heading>

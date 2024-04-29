@@ -48,7 +48,7 @@ const ReviewsDisplay = () => {
             )
             :
             (
-                <p className="text-start text-gray-500 m-8 text-2xl">No Reviews Yet</p>
+                <p className="text-center text-gray-500 mt-[15%] text-3xl">No Reviews Yet</p>
             )}
         </div>
     );

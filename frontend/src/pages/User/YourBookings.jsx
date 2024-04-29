@@ -130,7 +130,7 @@ const YourBookings=()=>
         </Table>
       </TableContainer>
          :
-         <h1>No Bookings to show</h1>
+         <p className="text-center text-gray-500 mt-[15%] text-2xl">No Bookings to show</p>
     }
      
     </>)

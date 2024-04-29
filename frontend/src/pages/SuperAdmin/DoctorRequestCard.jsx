@@ -35,7 +35,7 @@ const DoctorRequestCard = () => {
                         direction={{ base: 'column', sm: 'row' }}
                         overflow='hidden'
                         variant='outline'
-                        className='w-[40%] m-4'
+                        className='w-[40%] m-4 h-60'
                       >
                         <Image
                           objectFit='cover'

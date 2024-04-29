@@ -115,7 +115,7 @@ const DoctorHistory=()=>
         </Table>
       </TableContainer>
          :
-         <h1>Nothing to display</h1>
+         <p className="text-center text-gray-500 mt-[15%] text-2xl">No History to display</p>
     }
     
     

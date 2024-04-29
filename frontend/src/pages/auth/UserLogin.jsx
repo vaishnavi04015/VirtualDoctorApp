@@ -72,7 +72,7 @@ const UserLogin = () => {
         Cookies.set("email", responseData.email, { expires: 1 });
         Cookies.set("name", responseData.name, { expires: 1 });
 
-        nav("/checkAppoitment");
+        nav("/");
         window.location.reload(false);
       }
     } catch (error) {
