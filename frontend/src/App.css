@@ -24,3 +24,28 @@
     background-color: #334155 !important;
     /* color: black !important; */
   }
+
+  /* BookingSuccess.css */
+
+/* Container for the success message */
+.booking-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7%;
+  /* height: 100vh; */
+  /* background-color: #f5f5f5; */
+  font-family: Arial, sans-serif;
+}
+
+/* Icon style (you can replace this with your own SVG or image) */
+.success-icon {
+  color: #4caf50;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.bookingsList{
+  z-index: 2;
+}
+

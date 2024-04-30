@@ -24,7 +24,6 @@ const BookSchedule = () => {
                         // Extract date parts
                         const [dayA, monthA, yearA] = a.dnt.date.split('/').map(Number);
                         const [dayB, monthB, yearB] = b.dnt.date.split('/').map(Number);
-                            console.log({yearA,monthA,dayA});
                         // Compare by year
                         if (yearA !== yearB) {
                             return yearA - yearB;
@@ -79,7 +78,7 @@ const BookSchedule = () => {
     const userBooking = () => {
         if (date !== "" && time !== "") {
             let uid= uuidv4();
-            axios.post(`http://localhost:5000/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time,meetingId:uid,docName,expertise,sta:"Upcomming",reason:"-" })
+            axios.post(`http://localhost:5000/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time,meetingId:uid,docName,expertise,sta:"Upcomming",reason:"N/A" })
                 .then((res) => {
                     console.log(res.data)
                 })

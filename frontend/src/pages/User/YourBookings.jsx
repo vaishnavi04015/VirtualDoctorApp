@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDisclosure } from '@chakra-ui/react'
 import CancelAppointment from "./CancelAppointment";
+import { Button} from '@chakra-ui/react'
 
 
 const YourBookings=()=>
@@ -46,14 +47,36 @@ const YourBookings=()=>
         axios.get(`http://localhost:5000/Booking/getBooking/${email}`)
         .then((res) => {
           const sortedData = res.data.sort((a, b) => {
-              const dateA = a.dnt.date.split('/').reverse().join('/');
-              const dateB = b.dnt.date.split('/').reverse().join('/');
-              return dateA.localeCompare(dateB);
-          });
-          const today = new Date().toLocaleDateString("en-GB");
-          const filteredData = sortedData.filter((temp) => temp.dnt.date >= today);  // filter from current date
+            // Extract date parts
+            const [dayA, monthA, yearA] = a.dnt.date.split('/').map(Number);
+            const [dayB, monthB, yearB] = b.dnt.date.split('/').map(Number);
+            // Compare by year
+            if (yearA !== yearB) {
+                return yearA - yearB;
+            }
+            // Compare by month
+            if (monthA !== monthB) {
+                return monthA - monthB;
+            }
+            // Compare by day
+            return dayA - dayB;
+        });
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth() + 1; // January is 0, so add 1
+        const currentDate = today.getDate();
+
+        const filteredData = sortedData.filter((temp) => {
+            // Extract date parts
+            const [day, month, year] = temp.dnt.date.split('/').map(Number);
+            // Compare by year, month, and date
+            return year > currentYear ||
+                (year === currentYear && month > currentMonth) ||
+                (year === currentYear && month >= currentMonth && day >= currentDate);
+        });
           const sortedDateTime = filteredData.filter((temp) => {          // filter from current time of today
-            if (temp.dnt.date === today) {
+            if (temp.dnt.date === today.toLocaleDateString("en-GB")) {
               const currentTime = new Date();
               const currentHours = currentTime.getHours();
               const currentMinutes = currentTime.getMinutes();
@@ -107,7 +130,7 @@ const YourBookings=()=>
                         <Td>{temp.dnt.time}</Td>
                         <Td>{temp.sta}</Td>
                         <Td>{temp.reason}</Td>
-                        <Td><button style={{backgroundColor:"bisque"}} onClick={()=>{connect(temp.meetingId)}}>Connect</button></Td>
+                        <Td><Button colorScheme='blue' onClick={()=>{connect(temp.meetingId)}}>Connect</Button></Td>
                         <Td><CancelAppointment onHandleProceed={onHandleProceed} isReasonInvalid={isReasonInvalid} date={temp.dnt.date} time={temp.dnt.time} doctorEmail={temp.doctorEmail}/></Td>
                      </Tr>
                     }

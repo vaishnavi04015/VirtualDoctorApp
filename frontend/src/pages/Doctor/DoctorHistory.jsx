@@ -35,14 +35,36 @@ const DoctorHistory=()=>
         axios.get(`http://localhost:5000/Booking/getDoctorBooking/${email}`)
         .then((res) => {
           const sortedData = res.data.sort((a, b) => {
-              const dateA = a.dnt.date.split('/').reverse().join('/');
-              const dateB = b.dnt.date.split('/').reverse().join('/');
-              return dateB.localeCompare(dateA);
-          });
-          const today = new Date().toLocaleDateString("en-GB");
-          const filteredData = sortedData.filter((temp) => temp.dnt.date <= today);
+            // Extract date parts
+            const [dayA, monthA, yearA] = a.dnt.date.split('/').map(Number);
+            const [dayB, monthB, yearB] = b.dnt.date.split('/').map(Number);
+            // Compare by year
+            if (yearA !== yearB) {
+                return yearA - yearB;
+            }
+            // Compare by month
+            if (monthA !== monthB) {
+                return monthA - monthB;
+            }
+            // Compare by day
+            return dayA - dayB;
+        });
+
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth() + 1; // January is 0, so add 1
+        const currentDate = today.getDate();
+
+        const filteredData = sortedData.filter((temp) => {
+            // Extract date parts
+            const [day, month, year] = temp.dnt.date.split('/').map(Number);
+            // Compare by year, month, and date
+            return year > currentYear ||
+                (year === currentYear && month <= currentMonth) ||
+                (year === currentYear && month <= currentMonth && day <= currentDate);
+        });
           const sortedDateTime = filteredData.filter((temp) => {          
-            if (temp.dnt.date === today) {
+            if (temp.dnt.date === today.toLocaleDateString("en-GB")) {
               const currentTime = new Date();
               const currentHours = currentTime.getHours();
               const currentMinutes = currentTime.getMinutes();

@@ -182,9 +182,9 @@ const Navbar = () => {
                 </li> */}
               <li>
                 {" "}
-                <Menu isLazy>
+                <Menu isLazy className="bookingsList">
                   <MenuButton>Bookings</MenuButton>
-                  <MenuList>
+                  <MenuList >
                     <Link to="/myBookings">
                       <MenuItem>My Bookings</MenuItem>
                     </Link>

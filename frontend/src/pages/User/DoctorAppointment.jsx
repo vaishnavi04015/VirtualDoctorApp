@@ -15,7 +15,7 @@ const DoctorAppointment = () => {
     useEffect(() => { getData() }, [])
 
     useEffect(() => {
-        setSearchData(data.filter((temp) => temp.name.toLowerCase().includes(search.toLowerCase()) || temp.expertise.includes(search.toLowerCase()) || temp.experience == search));
+        setSearchData(data.filter((temp) => temp.name.toLowerCase().includes(search.toLowerCase()) || temp.expertise.toLowerCase().includes(search.toLowerCase()) || temp.experience >= search));
     }, [search])
 
     return (
