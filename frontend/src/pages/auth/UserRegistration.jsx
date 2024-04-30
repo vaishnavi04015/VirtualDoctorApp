@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import doctor from "../../assets/contactImg.png";
 const UserRegistration = () => {
   const [user, setUser] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    password: '',
+    userName: "",
+    email: "",
+    phone: "",
+    password: "",
   });
 
   const handleInput = (e) => {
@@ -23,22 +23,22 @@ const UserRegistration = () => {
   const handleForm = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:5000/auth/register', {
-      method: 'POST',
+    const response = await fetch("http://localhost:5000/auth/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     });
 
     if (response.ok) {
       setUser({
-        userName: '',
-        email: '',
-        phone: '',
-        password: '',
+        userName: "",
+        email: "",
+        phone: "",
+        password: "",
       });
-      toast.success('Registered Successfully !');
+      toast.success("Registered Successfully !");
     }
   };
 
@@ -123,8 +123,8 @@ const UserRegistration = () => {
           <div className="flex justify-center px-6 py-12">
             <div className="w-full xl:w-3/4 lg:w-11/12 flex">
               <img
-                className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
-                src=""
+                className="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+                src={doctor}
               />
 
               <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">

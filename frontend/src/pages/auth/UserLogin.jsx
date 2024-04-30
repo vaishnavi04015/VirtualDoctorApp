@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
+import userImg from "../../assets/contactImg.png";
 
 const UserLogin = () => {
   const [loginUser, setLoginUser] = useState({
@@ -84,10 +85,7 @@ const UserLogin = () => {
     <form onSubmit={handleLoginForm}>
       <div className="py-16">
         <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-          <img
-            className="hidden lg:block lg:w-1/2 bg-cover"
-            src="https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
-          />
+          <img className="hidden lg:block lg:w-1/2 bg-cover" src={userImg} />
           <div className="w-full p-8 lg:w-1/2">
             <p className="text-xl text-gray-600 text-center">Welcome back!</p>
 

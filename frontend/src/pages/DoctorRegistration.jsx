@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const DoctorRegistration = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [cpassword, setCpassword] = useState('');
-  const [expertise, setExpertise] = useState('');
-  const [experience, setExperience] = useState('');
-  const [address, setAddress] = useState('');
-  const [gender, setGender] = useState('');
-  const [mssg, setMssg] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+  const [expertise, setExpertise] = useState("");
+  const [experience, setExperience] = useState("");
+  const [address, setAddress] = useState("");
+  const [gender, setGender] = useState("");
+  const [mssg, setMssg] = useState("");
   const [photo, setPhoto] = useState(null);
   const [license, setLicense] = useState(null);
   const [degree, setDegree] = useState(null);
@@ -32,7 +32,7 @@ const DoctorRegistration = () => {
     if (password !== cpassword) {
       setMssg("Password doesn't match");
     } else {
-      setMssg('');
+      setMssg("");
     }
   };
 
@@ -41,21 +41,21 @@ const DoctorRegistration = () => {
     try {
       if (password === cpassword) {
         const formData = new FormData();
-        formData.append('photo', photo);
-        formData.append('license', license);
-        formData.append('degree', degree);
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('password', password);
-        formData.append('expertise', expertise);
-        formData.append('experience', experience);
-        formData.append('address', address);
-        formData.append('gender', gender);
+        formData.append("photo", photo);
+        formData.append("license", license);
+        formData.append("degree", degree);
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("password", password);
+        formData.append("expertise", expertise);
+        formData.append("experience", experience);
+        formData.append("address", address);
+        formData.append("gender", gender);
         await axios
-          .post('http://localhost:5000/docSubmit', formData, {
+          .post("http://localhost:5000/docSubmit", formData, {
             headers: {
-              'Content-Type': 'multipart/form-data',
+              "Content-Type": "multipart/form-data",
             },
           })
           .then((res) => alert(res.data))
@@ -174,14 +174,14 @@ const DoctorRegistration = () => {
                   type="radio"
                   value=""
                   name="gender"
-                  onChange={() => setGender('Male')}
+                  onChange={() => setGender("Male")}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 />
                 <label
                   for="horizontal-gender-license"
                   className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Male{' '}
+                  Male{" "}
                 </label>
               </div>
             </li>
@@ -190,7 +190,7 @@ const DoctorRegistration = () => {
                 <input
                   type="radio"
                   name="gender"
-                  onChange={() => setGender('Female')}
+                  onChange={() => setGender("Female")}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 />
                 <label
@@ -206,7 +206,7 @@ const DoctorRegistration = () => {
                 <input
                   type="radio"
                   name="gender"
-                  onChange={() => setGender('Others')}
+                  onChange={() => setGender("Others")}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                 />
                 <label
