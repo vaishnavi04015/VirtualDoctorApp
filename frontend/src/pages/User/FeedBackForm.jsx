@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const FeedBackForm = () => {
     const [rating, setRating] = useState(null);
@@ -24,7 +26,17 @@ const FeedBackForm = () => {
                     const reviews = { userName: Name, userEmail: Email, date, time, rating, review}
                     axios.patch("http://localhost:5000/reviews",{reviews, doctorEmail})
                     .then((res)=>{
-                    alert(res.data);
+                    // alert(res.data);
+                    toast.success(res.data, {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                      });
                     })
                     .catch((e)=>console.log(e))
                     setRating(null);
@@ -33,17 +45,47 @@ const FeedBackForm = () => {
                 }
                 else
                 {
-                    alert("Please give a Rating")
+                    // alert("Please give a Rating")
+                    toast.warn("Please give a Rating", {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                      });
                 }
             }
             else
             {
-                alert("Please give a doctor Email")
+                // alert("Please give a doctor Email")
+                toast.warn("Please give a doctor Email", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
             }
         }
         else
         {
-            alert("Please Login as user")
+            // alert("Please Login as user")
+            toast.warn("Please Login as user", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
         }
     }
 
@@ -51,11 +93,11 @@ const FeedBackForm = () => {
         <div className="py-4 px-8">
             <form>
                 <div className="mb-4">
-                    <label className="block mb-1">Doctor Email:</label>
-                    <input className="border-2 rounded-md py-1 px-2 w-[25%]" type="text" value={doctorEmail} onChange={(e)=>setDoctorEmail(e.target.value)}/>
+                    <label className="block mb-1 text-lg">Doctor Email:</label>
+                    <input className="border-2 rounded-md py-1 px-2 w-[40%]" type="text" value={doctorEmail} onChange={(e)=>setDoctorEmail(e.target.value)}/>
                 </div>
                 <div>
-                    <label className="block mb-1">Rating:</label>
+                    <label className="block mb-1 text-lg">Rating:</label>
                     <div style={{ display: "flex", flexWrap: "wrap" }}>
                         {[...Array(5)].map((_, index) => {
                             const currentRate = index + 1;
@@ -83,11 +125,11 @@ const FeedBackForm = () => {
                 </div>
                 
                 <div className="mb-4">
-                    <label className="block mb-1">Review:</label>
+                    <label className="block mb-2 mt-4 text-lg">Review:</label>
                     <textarea
                         value={review}
                         onChange={(e)=>setReview(e.target.value)}
-                        className="border-2 rounded-md py-1 px-2 w-[55%] h-52 resize-none overflow-y-auto overflow-x-hidden"
+                        className="border-2 rounded-md py-1 px-2 w-[80%] h-52 resize-none overflow-y-auto overflow-x-hidden"
                         placeholder="Enter additional information..."
                     ></textarea>
                 </div>

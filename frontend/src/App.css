@@ -46,6 +46,17 @@
   margin-bottom: 20px;
 }
 .bookingsList{
-  z-index: 2;
+  z-index: 2 !important;
 }
-
+.feedback-modal-content {
+  max-width: 50% !important;
+}
+.pdf-modal
+{
+  max-width: max-content !important;
+}
+.react-pdf__Page__canvas
+{
+  width: 1000px !important;
+  height: 800px !important;
+}

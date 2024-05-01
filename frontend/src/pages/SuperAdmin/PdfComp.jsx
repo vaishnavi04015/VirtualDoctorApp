@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Document, Page } from 'react-pdf';
-import  "../../App.css"
+import "../../App.css"
 
 function PdfComp (props) {
   const [numPages, setNumPages] = useState();

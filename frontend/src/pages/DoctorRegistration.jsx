@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const DoctorRegistration = () => {
   const [name, setName] = useState("");
@@ -58,10 +60,32 @@ const DoctorRegistration = () => {
               "Content-Type": "multipart/form-data",
             },
           })
-          .then((res) => alert(res.data))
+          .then((res) => {
+            // alert(res.data);
+            toast.success(res.data, {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          })
           .catch((e) => console.log(e));
       } else {
-        alert("Password doesn't match!!!");
+        // alert("Password doesn't match!!!");
+        toast.warn("Password doesn't match!!!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (e) {
       console.log(e);

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import { format } from "date-fns";
 import { v4 as uuidv4 } from 'uuid';
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const BookSchedule = () => {
     let k = useLocation();
@@ -89,10 +91,30 @@ const BookSchedule = () => {
                     console.log(res.data)
                 })
                 .catch((e) => console.log(e))
-                alert("booked succefully")
+                // alert("booked succefully")
+                toast.success("Booked Successful", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
                 nav("/bookingDone");
         } else {
-            alert("Select your booking")
+            // alert("Select your booking")
+            toast.warn("Select your booking", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
         }
     }
 

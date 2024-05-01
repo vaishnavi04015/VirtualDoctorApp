@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import PdfModal from "./PdfModal";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const DoctorDetails = () => {
     const nav = useNavigate();
@@ -9,14 +11,36 @@ const DoctorDetails = () => {
 
     const Accept = () => {
         axios.patch("http://localhost:5000/docVerfication", { email })
-            .then((res) => alert(res.data))
+            .then((res) => {
+                toast.success(res.data, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+            })
             .catch((e) => console.log(e))
         nav("/docrequests");
     }
 
     const Decline = () => {
         axios.delete(`http://localhost:5000/docDelete/${email}`)
-            .then((res) => alert(res.data))
+            .then((res) => {
+                toast.success(res.data, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+            })
             .catch((e) => console.log(e))
         nav("/docrequests");
     }

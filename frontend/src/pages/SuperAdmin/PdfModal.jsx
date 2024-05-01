@@ -10,6 +10,7 @@ import {
   import { useDisclosure } from '@chakra-ui/react';
   import { useState } from 'react';
    import PdfComp from './PdfComp';
+   import "../../App.css"
 
     pdfjs.GlobalWorkerOptions.workerSrc = new URL(
            'pdfjs-dist/build/pdf.worker.min.js',
@@ -40,7 +41,7 @@ import {
         </Button>
         <Modal isCentered isOpen={isOpen} onClose={onClose} className=" w-[90%]">
           {overlay}
-          <ModalContent>
+          <ModalContent className='pdf-modal'>
             <ModalCloseButton />
             <ModalBody>
                  <PdfComp fileName={props.fileName}/>

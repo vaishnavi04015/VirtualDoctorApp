@@ -13,12 +13,13 @@ import {
 } from '@chakra-ui/react';
 import FeedBackForm from './FeedBackForm';
 import "./FeedBackModal.css";
+import "../../App.css"
 
 const FeedBackModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
+    <div>
       <Button
         onClick={() => {
           onOpen();
@@ -31,7 +32,7 @@ const FeedBackModal = () => {
           bg='blackAlpha.300'
           backdropFilter='blur(10px) hue-rotate(90deg)'
         />
-        <ModalContent className='ModalContent'>
+        <ModalContent className='feedback-modal-content'>
           <ModalHeader>FeedBack Form</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -42,7 +43,7 @@ const FeedBackModal = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 };
 

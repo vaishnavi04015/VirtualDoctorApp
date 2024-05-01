@@ -4,6 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const DoctorSchedule = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -47,8 +49,18 @@ const DoctorSchedule = () => {
             const formattedDate = selectedDate.toLocaleDateString("en-GB");
             axios.post("http://localhost:5000/createSchedule", { name, email, date: formattedDate, time: formattedTimes })
                 .then((res) => {
-                    alert(res.data);
-                    console.log(res);
+                    // alert(res.data);
+                    // console.log(res);
+                    toast.success(res.data, {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                      });
                 })
                 .catch((e) => console.log(e));
             setSelectedDate(null);
@@ -56,7 +68,17 @@ const DoctorSchedule = () => {
         }
         else
         {
-            alert("please select a date and time slots");
+            // alert("please select a date and time slots");
+            toast.warn("please select a date and time slots", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
         }
     };
 

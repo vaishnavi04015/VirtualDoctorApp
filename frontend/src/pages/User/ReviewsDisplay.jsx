@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { FaStar } from 'react-icons/fa';
-import FeedBackForm from './FeedBackForm';
 
 const ReviewsDisplay = () => {
     let k = useLocation();
@@ -25,7 +24,7 @@ const ReviewsDisplay = () => {
             ?
             (
                 reviews.map((temp, index) => (
-                    <div key={index} className="w-[50%] m-8 p-4 border rounded-lg relative">
+                    <div key={index} className="w-[50%] ml-[25%] m-8 p-4 border rounded-lg relative">
                         <h2 className="text-xl font-bold mb-2">{temp.userName}</h2>
                         <div className="absolute top-2 right-4">
                             <h3 className="text-sm mb-1">{temp.date}</h3>

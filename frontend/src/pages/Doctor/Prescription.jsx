@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Prescription = () => {
     const [prescription, setPrescription] = useState([]);
@@ -53,12 +55,32 @@ const Prescription = () => {
             console.log(advice);
             axios.post("http://localhost:5000/pres/addPrescription",{name,email,doctorName,doctorEmail,date,time,prescription,advice})
             .then((res)=>{
-                alert(res.data)
-                console.log(res.data)
+                // alert(res.data)
+                // console.log(res.data)
+                toast.success(res.data, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
             })
             .catch((e)=>console.log(e))
         } else {
-            alert('Please fill in all fields.');
+            // alert('Please fill in all fields.');
+            toast.warn('Please fill in all fields', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
         }
     };
     
