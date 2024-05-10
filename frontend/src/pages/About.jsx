@@ -11,7 +11,7 @@ function About() {
     <div>
       <div className='w-full h-96 bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_384px]'>
         {/* <img src="https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png" className='w-full h-96'/> */}
-        <div className='absolute top-[13%] left-[3%] '>
+        <div className='absolute top-36 left-[3%] '>
                  <span className='text-5xl'>Skip the travel!</span><br/>
                  <span className='text-5xl'>Take Online Doctor Consultation</span><br/><br/>
                  <span className='text-2xl'>Private consultation + Video call · Starts at just ₹199</span><br/><br/>
@@ -25,7 +25,7 @@ function About() {
         </div>
       </div>
       <div className='relative top-16'>
-              <h1 className='text-3xl ml-[3%]'>Common Health Concerns</h1>
+              <h1 className='text-3xl ml-[3%] font-semibold'>Common Health Concerns</h1>
               <p className='text-lg text-gray-500 ml-[3%]'>Consult a doctor online for any health issue</p>
               <br/><br/>
               <div className='ml-[0.5%]'>
@@ -33,11 +33,11 @@ function About() {
               </div>
       </div>
       <br/><br/><br/>
-       <div className='relative top-16'>
-         <h1>Offers</h1>
-         <div className='flex'>
-          <div className='w-[32%] h-56 bg-green-300 flex'>
-            <div>
+       <div className='relative top-16 ml-[3%]'>
+         <h1 className='text-3xl font-semibold'>Offers</h1>
+         <div className='flex mt-10 w-[90%] justify-between'>
+          <div className='w-[48%] h-56 bg-green-300 flex rounded'>
+            <div className='w-[90%]'>
             <p className=' bg-white py-1 text-green-500 w-max mt-4 ml-4 font-medium px-3'>OFFER</p>
             <br/>
             <p className=' text-3xl font-semibold ml-4'>Download the App & get</p>
@@ -45,12 +45,12 @@ function About() {
             <br/>
             <p className=' text-xl font-semibold ml-4 flex'>Download App<span className='mt-1.5 ml-2'><FaCircleChevronRight/></span> </p>
             </div>
-            <div className='grid place-items-end'>
+            <div className='grid place-items-end justify-end'>
             <img src="https://www.practo.com/consult/static/images/offer-app-v1.png" width="100px" height="90px"/>
             </div>
           </div>
-          <div className='w-[32%] h-56 bg-orange-300 flex'>
-            <div>
+          <div className='w-[48%] h-56 bg-orange-300 flex rounded'>
+            <div className='w-[90%]'>
             <p className=' bg-white py-1 text-orange-500 w-max mt-4 ml-4 font-medium px-3'>OFFER</p>
             <br/>
             <p className=' text-3xl font-semibold ml-4'>Consult with specialists at</p>
@@ -58,7 +58,7 @@ function About() {
             <br/>
             <p className=' text-xl font-semibold ml-4 flex'>Consult Now<span className='mt-1.5 ml-2'><FaCircleChevronRight/></span> </p>
             </div>
-            <div className='grid place-items-end ml-11'>
+            <div className='grid place-items-end justify-end'>
             <img src="https://www.practo.com/consult/static/images/offer-specialist-v1.png" width="100px" height="90px"/>
             </div>
           </div>
