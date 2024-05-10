@@ -120,8 +120,10 @@ const BookSchedule = () => {
 
     const handleBooking = (index, date, time) => {
         setColor((temp) => temp === index ? null : index);
-        setDate((temp) => temp === date ? "" : date);
+        setDate(date)
         setTime((temp) => temp === time ? "" : time);
+        console.log(date);
+        console.log(time);
     }
     
 

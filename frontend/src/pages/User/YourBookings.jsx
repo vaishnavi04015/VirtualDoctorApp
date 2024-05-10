@@ -130,7 +130,7 @@ const YourBookings=()=>
                         <Td>{temp.dnt.time}</Td>
                         <Td>{temp.sta}</Td>
                         <Td>{temp.reason}</Td>
-                        <Td><Button colorScheme='blue' onClick={()=>{connect(temp.meetingId)}}>Connect</Button></Td>
+                        <Td><button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 m-3" onClick={()=>{connect(temp.meetingId)}}>connect</button></Td>
                         <Td><CancelAppointment onHandleProceed={onHandleProceed} isReasonInvalid={isReasonInvalid} date={temp.dnt.date} time={temp.dnt.time} doctorEmail={temp.doctorEmail}/></Td>
                      </Tr>
                     }
