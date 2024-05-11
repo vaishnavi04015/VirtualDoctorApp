@@ -4,5 +4,8 @@
     {"image":"https://www.practo.com/consult/static/images/performance-issues-bed-v1.jpg","issue":"Performance issues in bed?","price":"₹499"},
     {"image":"https://www.practo.com/consult/static/images/skin-problems-v1.jpg","issue":"Skin problems?","price":"₹449"},
     {"image":"https://www.practo.com/consult/static/images/depression-anxiety-v1.jpg","issue":"Depression or anxiety?","price":"₹499"},
-    {"image":"https://www.practo.com/consult/static/images/lose-weight-v1.jpg","issue":"Want to lose weight?","price":"₹350"}
+    {"image":"https://www.practo.com/consult/static/images/lose-weight-v1.jpg","issue":"Want to lose weight?","price":"₹350"},
+    {"image":"https://www.practo.com/consult/static/images/stomach-issues-v1.jpg","issue":"Stomach issues?","price":"₹499"},
+    {"image":"https://www.practo.com/consult/static/images/vaginal-infections-v1.jpg","issue":"Vaginal infections?","price":"₹599"},
+    {"image":"https://www.practo.com/consult/static/images/sick-kid-v1.jpg","issue":"Sick kid?","price":"₹599"}
 ]
