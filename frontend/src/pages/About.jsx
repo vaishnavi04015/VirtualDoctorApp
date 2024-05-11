@@ -94,11 +94,30 @@ function About() {
               <hr className='border-gray-200 mt-9 border-2 w-24 '/>
               <PiPrescription size={70} className=' bg-gray-200 rounded-full p-4'/>
             </div>
-            <p className='mt-4'>Audio/ video call with a verified doctor</p>
+            <p className='mt-4'>Get a digital prescription & a free follow-up</p>
           </div>
           </div>
         </div>
        </div>
+       <br/><br/><br/><br/><br/><br/><br/><br/>
+       <div className='w-full h-32 bg-slate-900 text-white flex justify-evenly'>
+          <div className='mt-7'>
+            <p className=' text-3xl font-semibold'>2,00,000+</p>
+            <p className=' text-lg ml-2 font-semibold'>Happy Users</p>
+          </div>
+          <div className='mt-7'>
+            <p  className=' text-3xl font-semibold ml-3'>20,000+</p>
+            <p className=' text-lg font-semibold'>Verified Doctors</p>
+          </div>
+          <div className='mt-7'>
+            <p  className=' text-3xl font-semibold ml-6'>25+</p>
+            <p className=' text-lg  font-semibold'>Specialities</p>
+          </div>
+          <div className='mt-7'>
+            <p  className=' text-3xl font-semibold'>4.5 / 5</p>
+            <p className=' text-lg  font-semibold'>App Rating</p>
+          </div>
+        </div>
     </div>
   );
 }
