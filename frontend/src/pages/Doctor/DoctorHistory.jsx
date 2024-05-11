@@ -59,9 +59,9 @@ const DoctorHistory=()=>
             // Extract date parts
             const [day, month, year] = temp.dnt.date.split('/').map(Number);
             // Compare by year, month, and date
-            return year > currentYear ||
-                (year === currentYear && month <= currentMonth) ||
-                (year === currentYear && month <= currentMonth && day <= currentDate);
+            return year < currentYear ||
+                (year === currentYear && month < currentMonth) ||
+                (year === currentYear && month === currentMonth && day <= currentDate);
         });
           const sortedDateTime = filteredData.filter((temp) => {          
             if (temp.dnt.date === today.toLocaleDateString("en-GB")) {
