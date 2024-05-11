@@ -49,8 +49,7 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                {/* <NavLink to="/">Home</NavLink> */}
-                <NavLink to="/about">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               {/* <li>
                 {" "}
@@ -79,8 +78,7 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                {/* <NavLink to="/">Home</NavLink> */}
-                <NavLink to="/about">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               {/* <li>
                 {" "}
@@ -139,8 +137,7 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                {/* <NavLink to="/">Home</NavLink> */}
-                <NavLink to="/about">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               {/* <li>
                 {" "}
@@ -165,8 +162,7 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                {/* <NavLink to="/">Home</NavLink> */}
-                <NavLink to="/about">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               {/* <li>
                 {" "}
@@ -217,8 +213,7 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                {/* <NavLink to="/">Home</NavLink> */}
-                <NavLink to="/about">Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               {/* <li>
                 {" "}
