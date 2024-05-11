@@ -4,6 +4,10 @@ import { FaFilePrescription } from "react-icons/fa";
 import { BiCommentDetail } from "react-icons/bi";
 import Corousal from './Corousal';
 import { FaCircleChevronRight } from "react-icons/fa6";
+import { LuMousePointerClick } from "react-icons/lu";
+import { MdHorizontalRule } from "react-icons/md";
+import { GoCommentDiscussion } from "react-icons/go";
+import { PiPrescription } from "react-icons/pi";
 
 
 function About() {
@@ -62,6 +66,21 @@ function About() {
             <img src="https://www.practo.com/consult/static/images/offer-specialist-v1.png" width="100px" height="90px"/>
             </div>
           </div>
+         </div>
+         <br/><br/> <br/> <br/>
+         <div className='grid place-items-center'>
+           <h1 className=' text-4xl font-semibold'>How it works</h1>
+           <br/><br/>
+           <div className="flex">
+           <div>
+           <LuMousePointerClick size={70} className=' bg-gray-200 rounded-full p-4 ml-14'/>
+           <p className='mt-4'>Select a speciality or symptom</p>
+           </div>
+           <hr className='border-gray-200 mt-9 border-2 w-96 '/>
+           <GoCommentDiscussion  size={70} className=' bg-gray-200 rounded-full p-4'/>
+           <hr className='border-gray-200 mt-9 border-2 w-96 '/>
+           <PiPrescription size={70} className=' bg-gray-200 rounded-full p-4'/>
+           </div>
          </div>
        </div>
     </div>
