@@ -37,9 +37,9 @@ function About() {
               </div>
       </div>
       <br/><br/><br/>
-       <div className='relative top-16 ml-[3%]'>
+       <div className='relative top-16 ml-[3%] w-[90%]'>
          <h1 className='text-3xl font-semibold'>Offers</h1>
-         <div className='flex mt-10 w-[90%] justify-between'>
+         <div className='flex mt-10 justify-between'>
           <div className='w-[48%] h-56 bg-green-300 flex rounded'>
             <div className='w-[90%]'>
             <p className=' bg-white py-1 text-green-500 w-max mt-4 ml-4 font-medium px-3'>OFFER</p>
@@ -66,22 +66,38 @@ function About() {
             <img src="https://www.practo.com/consult/static/images/offer-specialist-v1.png" width="100px" height="90px"/>
             </div>
           </div>
-         </div>
-         <br/><br/> <br/> <br/>
-         <div className='grid place-items-center'>
-           <h1 className=' text-4xl font-semibold'>How it works</h1>
-           <br/><br/>
-           <div className="flex">
-           <div>
-           <LuMousePointerClick size={70} className=' bg-gray-200 rounded-full p-4 ml-14'/>
-           <p className='mt-4'>Select a speciality or symptom</p>
-           </div>
-           <hr className='border-gray-200 mt-9 border-2 w-96 '/>
-           <GoCommentDiscussion  size={70} className=' bg-gray-200 rounded-full p-4'/>
-           <hr className='border-gray-200 mt-9 border-2 w-96 '/>
-           <PiPrescription size={70} className=' bg-gray-200 rounded-full p-4'/>
-           </div>
-         </div>
+        </div>
+        <br/><br/> <br/> <br/>
+        <div className='grid place-items-center'>
+          <h1 className=' text-4xl font-semibold'>How it works</h1>
+          <br/><br/>
+          <div className="flex">
+            <div>
+              <div className='flex'>
+                <LuMousePointerClick size={70} className=' bg-gray-200 rounded-full p-4 ml-14'/>
+                <hr className='border-gray-200 mt-9 border-2 w-24 '/>
+              </div>
+              <p className='mt-4'>Select a speciality or symptom</p>
+            </div>
+          <hr className='border-gray-200 mt-9 border-2 w-52 '/>
+          <div>
+            <div className='flex'>
+              <hr className='border-gray-200 mt-9 border-2 w-28 '/>
+              <GoCommentDiscussion  size={70} className=' bg-gray-200 rounded-full p-4'/>
+              <hr className='border-gray-200 mt-9 border-2 w-24 '/>
+            </div>
+            <p className='mt-4'>Audio/ video call with a verified doctor</p>
+          </div>
+          <hr className='border-gray-200 mt-9 border-2 w-52 '/>
+          <div>
+            <div className='flex'>
+              <hr className='border-gray-200 mt-9 border-2 w-24 '/>
+              <PiPrescription size={70} className=' bg-gray-200 rounded-full p-4'/>
+            </div>
+            <p className='mt-4'>Audio/ video call with a verified doctor</p>
+          </div>
+          </div>
+        </div>
        </div>
     </div>
   );
