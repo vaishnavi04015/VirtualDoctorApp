@@ -49,12 +49,13 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                <NavLink to="/">Home</NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <NavLink to="/about">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 {" "}
                 <NavLink to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li>
                 {" "}
                 <NavLink to="/services">Services</NavLink>
@@ -78,12 +79,13 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                <NavLink to="/">Home</NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <NavLink to="/about">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 {" "}
                 <NavLink to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li>
                 {" "}
                 <NavLink to="/services">Services</NavLink>
@@ -137,12 +139,13 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                <NavLink to="/">Home</NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <NavLink to="/about">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 {" "}
                 <NavLink to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li>
                 {" "}
                 <NavLink to="/services">Services</NavLink>
@@ -162,12 +165,13 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                <NavLink to="/">Home</NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <NavLink to="/about">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 {" "}
                 <NavLink to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li>
                 {" "}
                 <NavLink to="/services">Services</NavLink>
@@ -213,12 +217,13 @@ const Navbar = () => {
             <div className="flex relative space-x-6 text-center ">
               <li>
                 {" "}
-                <NavLink to="/">Home</NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <NavLink to="/about">Home</NavLink>
               </li>
-              <li>
+              {/* <li>
                 {" "}
                 <NavLink to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li>
                 {" "}
                 <NavLink to="/services">Services</NavLink>

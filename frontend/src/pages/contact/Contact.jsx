@@ -1,5 +1,6 @@
 import React from 'react';
-import contactImg from '../../assets/contactImg.png';
+// import contactImg from '../../assets/contactImg.png';
+import doctorImg from "../../assets/doctorImg.png"
 const Contact = () => {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -7,8 +8,8 @@ const Contact = () => {
 
       <div className="flex justify-around ">
         <div className="w-full md:w-1/2 px-8 mb-8">
-          <img className="w-3/4" src={contactImg} alt="contact" />
-          
+          {/* <img className="w-3/4" src={contactImg} alt="contact" /> */}
+          <img className="w-3/4" src={doctorImg} alt="contact" />
         </div>
         <div className="w-full md:w-1/2 px-4 mb-8">
           <div className="bg-white p-6 rounded-lg shadow-md">

@@ -51,7 +51,7 @@ const PrescriptionDisplayCard = () => {
             <input
                 type='text'
                 onChange={(e)=>setSearch(e.target.value)}
-                placeholder="Search..."
+                placeholder="Search by Email/Name"
                 className="w-[40%] mt-10 ml-[30%] px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
             />
             {
