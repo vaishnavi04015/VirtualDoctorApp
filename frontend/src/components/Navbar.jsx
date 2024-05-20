@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="bg-slate-700 text-slate-100 font-semibold text-lg h-18 p-5 align-middle text-center sticky">
         <ul className="flex relative justify-around text-center">
           <div className=" w-40 ">
-            <img src={Logo} alt="24/7 Virtual Care" className="w-full h-92" />
+            <NavLink to="/"><img src={Logo} alt="24/7 Virtual Care" className="w-full h-92" /></NavLink>
           </div>
 
           {adminToken != null ? (

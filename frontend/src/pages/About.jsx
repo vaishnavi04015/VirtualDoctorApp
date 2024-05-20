@@ -12,9 +12,9 @@ import { PiPrescription } from 'react-icons/pi';
 function About() {
   return (
     <div>
-      <div className='w-full h-[57vh] bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_500px]'>
+      <div className='w-full h-[500px] bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_500px]'>
         {/* <img src="https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png" className='w-full h-96'/> */}
-        <div className="absolute top-36 left-[3%] ">
+        <div className="absolute top-44 left-[3%] ">
           <span className="text-5xl">Skip the travel!</span>
           <br />
           <span className="text-5xl">Take Online Doctor Consultation</span>
@@ -30,7 +30,8 @@ function About() {
           </button>
           <br />
           <br />
-          <br />
+          <br /><br />
+          <br /><br />
           <div className="flex w-[90%] justify-between font-medium mt-2">
             <p className="flex">
               <span className="mt-1 mr-2">

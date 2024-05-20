@@ -87,15 +87,15 @@ const DoctorSchedule = () => {
   };
 
   return (
-    <div className=" container flex justify-center bg-slate-100 h-[100vh] mx-auto px-4 ">
-      <div>
-        <img src={schedule} alt="img" />
+    <div className=" w-full flex justify-center bg-slate-100 h-[91vh] mx-auto px-4 ">
+      <div className='w-[50%] '>
+        <img src={schedule} alt="img" className='h-[87vh] mt-[2vh]'/>
       </div>
-      <div className="flex flex-col space-y-20 bg-white rounded-lg shadow-md h-full  w-1/2 p-8">
+      <div className="flex flex-col space-y-20 bg-white rounded-lg shadow-md h-[87vh] mt-[2vh] w-[50%] p-8">
         <h2 className="text-start text-gray-800 font-semibold text-xl">
           Select the slots as per availibility :{' '}
         </h2>
-        <div className="flex flex-wrap justify-between items-center">
+        <div className="flex flex-wrap justify-evenly items-center">
           <div className="flex items-center space-x-4">
             <h3 className="text-lg font-bold">Date:</h3>
             <DatePicker
@@ -118,13 +118,13 @@ const DoctorSchedule = () => {
             />
           </div>
         </div>
-        <div className="mb-4">
+        <div className="mb-4 h-[43vh]">
           <h2 className="text-lg font-bold">Selected Time Slots:</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 overflow-y-scroll h-[46vh] place-content-start">
             {selectedTimes.map((time, index) => (
               <div
                 key={index}
-                className="flex items-center px-4 py-2 bg-gray-100 rounded-md shadow-sm"
+                className="flex items-center px-4 py-2 bg-gray-100 rounded-md shadow-sm h-14"
               >
                 <span className="text-gray-700">{format(time, 'HH:mm')}</span>
                 <button

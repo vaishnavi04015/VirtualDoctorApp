@@ -53,22 +53,25 @@ const BookSchedule = () => {
                     });
 
                     const sortedDateTime = filteredData.filter((temp) => {          // filter from current time of today
-                             if (temp.dnt.date === today.toLocaleDateString("en-GB")) {
-                                 const currentTime = new Date();
-                                 const currentHours = currentTime.getHours();
-                                 const currentMinutes = currentTime.getMinutes();
-                                 const currentTotalMinutes = currentHours * 60 + currentMinutes
-                                 temp.dnt.time = temp.dnt.time.filter((time) => {
-                                     const [hours, minutes] = time.t.split(':').map(Number);
-                                     const totalMinutes = hours * 60 + minutes;
-                                     return totalMinutes >= currentTotalMinutes;
-                                 })
-                                 return temp;
-                             } else {
-                                 return temp;
-                             }
+                            if (temp.dnt.date === today.toLocaleDateString("en-GB")) {
+                                const currentTime = new Date();
+                                const currentHours = currentTime.getHours();
+                                const currentMinutes = currentTime.getMinutes();
+                                const currentTotalMinutes = currentHours * 60 + currentMinutes
+                                temp.dnt.time = temp.dnt.time.filter((time) => {
+                                    const [hours, minutes] = time.t.split(':').map(Number);
+                                    const totalMinutes = hours * 60 + minutes;
+                                    return totalMinutes > currentTotalMinutes;
+                                })
+                                if(temp.dnt.time.length > 0)
+                                {
+                                    return temp;
+                                }
+                            }
+                            else {
+                                return temp;
+                            }
                          });
-    
                     setData(sortedDateTime);
                 })
                 .catch((e) => console.log(e));

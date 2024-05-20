@@ -9,8 +9,23 @@ router.use(express.json())
 router.use(cors())
 
 router.post("/createSchedule",async(req,res)=>{
+
     let {name,email,date,time}=req.body
-    await doctorSchedule.create({ name,email,dnt:{date,time}});
+    let data=await doctorSchedule.findOne( {$and : [ {email : email} , {"dnt.date" : date} ] } );
+    
+    if(data)
+    {
+        let selectedtime = time.filter((t)=>{
+            return !data.dnt.time.some((temp)=> temp.t === t.t);
+        })
+        data.dnt.time = data.dnt.time.concat(selectedtime);
+        await doctorSchedule.findByIdAndUpdate(data._id,data);
+    }
+    else
+    {
+        await doctorSchedule.create({ name,email,dnt:{date,time}});
+    }
+
     res.send("schedule added");
 })
 

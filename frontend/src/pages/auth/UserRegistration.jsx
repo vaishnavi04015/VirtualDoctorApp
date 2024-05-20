@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import doctor from "../../assets/contactImg.png";
+import { Link } from "react-router-dom";
 const UserRegistration = () => {
   const [user, setUser] = useState({
     userName: "",
@@ -223,21 +224,22 @@ const UserRegistration = () => {
                     </button>
                   </div>
                   <hr className="mb-6 border-t" />
-                  <div className="text-center">
+                  {/* <div className="text-center">
                     <a
                       className="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800"
                       href="#"
                     >
                       Forgot Password?
                     </a>
-                  </div>
+                  </div> */}
                   <div className="text-center">
-                    <a
+                    {/* <a
                       className="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800"
                       href="./index.html"
                     >
                       Already have an account? Login!
-                    </a>
+                    </a> */}
+                    <Link to="/login" className="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800">Already have an account? Login!</Link>
                   </div>
                 </form>
               </div>
