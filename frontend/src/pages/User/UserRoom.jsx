@@ -9,8 +9,8 @@ const UserRoom=()=>
     let{name} = k.state;
 
     const MyMeeting=async(element)=>{
-        const appID = 1426706679;
-        const serverSecret = "a704a534848ee5b24d9f97c6c26d0772";
+        const appID = 107875332;
+        const serverSecret = "d90fb33171bd2297687d5456546d6a01";
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
             appID,
             serverSecret,
