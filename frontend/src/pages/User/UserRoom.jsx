@@ -9,8 +9,10 @@ const UserRoom=()=>
     let{name} = k.state;
 
     const MyMeeting=async(element)=>{
-        const appID = 107875332;
-        const serverSecret = "d90fb33171bd2297687d5456546d6a01";
+        // const appID = 107875332;
+        // const serverSecret = "d90fb33171bd2297687d5456546d6a01";
+        const appID = 2143794056;
+        const serverSecret = "bd6cdc65af955d281879f66a0ecbfbbe";
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
             appID,
             serverSecret,
@@ -33,8 +35,8 @@ const UserRoom=()=>
         
     }
     
-    return(<div>
-        <div ref={MyMeeting}/>
+    return(<div className="h-[91.3vh]">
+        <div className="h-[100%]" ref={MyMeeting}/>
     </div>)
 }
 
