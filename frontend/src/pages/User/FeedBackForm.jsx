@@ -24,7 +24,7 @@ const FeedBackForm = () => {
                     const date = new Date().toLocaleDateString("en-GB");
                     const time = new Date().toLocaleTimeString();
                     const reviews = { userName: Name, userEmail: Email, date, time, rating, review}
-                    axios.patch("http://localhost:5000/reviews",{reviews, doctorEmail})
+                    axios.patch("https://virtualdoctorapp-backend.onrender.com/reviews",{reviews, doctorEmail})
                     .then((res)=>{
                     // alert(res.data);
                     toast.success(res.data, {

@@ -23,7 +23,7 @@ const Navbar = () => {
     if (docToken !== undefined) {
       const email = Cookies.get('email');
       axios
-        .get(`http://localhost:5000/getDocData/${email}`)
+        .get(`https://virtualdoctorapp-backend.onrender.com/getDocData/${email}`)
         .then((res) => {
           setVerified(res.data.verified);
         })

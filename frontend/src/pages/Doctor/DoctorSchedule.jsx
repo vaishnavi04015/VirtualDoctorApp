@@ -48,7 +48,7 @@ const DoctorSchedule = () => {
       }));
       const formattedDate = selectedDate.toLocaleDateString('en-GB');
       axios
-        .post('http://localhost:5000/createSchedule', {
+        .post('https://virtualdoctorapp-backend.onrender.com/createSchedule', {
           name,
           email,
           date: formattedDate,

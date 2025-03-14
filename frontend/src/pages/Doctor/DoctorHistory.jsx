@@ -32,7 +32,7 @@ const DoctorHistory=()=>
       
     const getData=()=>
     {
-        axios.get(`http://localhost:5000/Booking/getDoctorBooking/${email}`)
+        axios.get(`https://virtualdoctorapp-backend.onrender.com/Booking/getDoctorBooking/${email}`)
         .then((res) => {
           const sortedData = res.data.sort((a, b) => {
             // Extract date parts
@@ -81,7 +81,7 @@ const DoctorHistory=()=>
           {
             try
             {
-               axios.patch("http://localhost:5000/Booking/updateBooking",{_id:item._id})
+               axios.patch("https://virtualdoctorapp-backend.onrender.com/Booking/updateBooking",{_id:item._id})
                .then((res)=>{
                 console.log(res);
                })

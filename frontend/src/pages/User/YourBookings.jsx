@@ -30,7 +30,7 @@ const YourBookings=()=>
     {
          if(reason!=="")
          {
-             axios.patch("http://localhost:5000/Booking/cancelBooking",{reason,date,time,doctorEmail,email})
+             axios.patch("https://virtualdoctorapp-backend.onrender.com/Booking/cancelBooking",{reason,date,time,doctorEmail,email})
              .then((res)=>console.log(res.data))
              .catch((e)=>console.log(e))
              onClose();
@@ -44,7 +44,7 @@ const YourBookings=()=>
    
     const getData=()=>
     {
-        axios.get(`http://localhost:5000/Booking/getBooking/${email}`)
+        axios.get(`https://virtualdoctorapp-backend.onrender.com/Booking/getBooking/${email}`)
         .then((res) => {
           const sortedData = res.data.sort((a, b) => {
             // Extract date parts

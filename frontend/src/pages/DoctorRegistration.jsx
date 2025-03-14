@@ -55,7 +55,7 @@ const DoctorRegistration = () => {
         formData.append("address", address);
         formData.append("gender", gender);
         await axios
-          .post("http://localhost:5000/docSubmit", formData, {
+          .post("https://virtualdoctorapp-backend.onrender.com/docSubmit", formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

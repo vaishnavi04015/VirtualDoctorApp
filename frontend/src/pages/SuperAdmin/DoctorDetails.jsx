@@ -10,7 +10,7 @@ const DoctorDetails = () => {
     const { name, email, phone, experience, degree, expertise, gender, photo, license, address } = location.state.details;
 
     const Accept = () => {
-        axios.patch("http://localhost:5000/docVerfication", { email })
+        axios.patch("https://virtualdoctorapp-backend.onrender.com/docVerfication", { email })
             .then((res) => {
                 toast.success(res.data, {
                     position: "top-right",
@@ -28,7 +28,7 @@ const DoctorDetails = () => {
     }
 
     const Decline = () => {
-        axios.delete(`http://localhost:5000/docDelete/${email}`)
+        axios.delete(`https://virtualdoctorapp-backend.onrender.com/docDelete/${email}`)
             .then((res) => {
                 toast.success(res.data, {
                     position: "top-right",

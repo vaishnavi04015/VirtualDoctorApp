@@ -20,7 +20,7 @@ const BookSchedule = () => {
 
     const getData = () => {
         if (email != null) {
-            axios.get(`http://localhost:5000/getSchedule/${email}`)
+            axios.get(`https://virtualdoctorapp-backend.onrender.com/getSchedule/${email}`)
                 .then((res) => {
                     const sortedData = res.data.sort((a, b) => {
                         // Extract date parts
@@ -83,13 +83,13 @@ const BookSchedule = () => {
     const userBooking = () => {
         if (date !== "" && time !== "") {
             let uid= uuidv4();
-            axios.post(`http://localhost:5000/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time,meetingId:uid,docName,expertise,sta:"Upcomming",reason:"N/A" })
+            axios.post(`https://virtualdoctorapp-backend.onrender.com/Booking/addBooking`, { name, email: UserEmail, doctorEmail: email, date, time,meetingId:uid,docName,expertise,sta:"Upcomming",reason:"N/A" })
                 .then((res) => {
                     console.log(res.data)
                 })
                 .catch((e) => console.log(e))
 
-            axios.patch('http://localhost:5000/scheduleStatus', { email, date, time })
+            axios.patch('https://virtualdoctorapp-backend.onrender.com/scheduleStatus', { email, date, time })
                 .then((res) => {
                     console.log(res.data)
                 })

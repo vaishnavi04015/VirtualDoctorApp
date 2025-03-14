@@ -25,7 +25,7 @@ const UserRoom=()=>
             container:element,
             sharedLinks:[{
               name:'Copy Link',
-              url:`http://localhost:5173/userRoom/${roomId}`
+              url:`https://virtualdoctorapp-frontend.onrender.com/userRoom/${roomId}`
             }],
             scenario:{
                 mode:ZegoUIKitPrebuilt.OneONoneCall,

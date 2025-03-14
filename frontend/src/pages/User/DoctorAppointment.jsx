@@ -8,7 +8,7 @@ const DoctorAppointment = () => {
     const [search, setSearch] = useState("");
 
     const getData = () => {
-        axios.get("http://localhost:5000/docDetails")
+        axios.get("https://virtualdoctorapp-backend.onrender.com/docDetails")
             .then((res) => setData(res.data))
             .catch((e) => console.log(e))
     }

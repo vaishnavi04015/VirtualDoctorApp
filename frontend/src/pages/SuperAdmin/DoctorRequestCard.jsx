@@ -8,7 +8,7 @@ const DoctorRequestCard = () => {
     let nav = useNavigate();
 
     const getData = () => {
-        axios.get("http://localhost:5000/docDetails")
+        axios.get("https://virtualdoctorapp-backend.onrender.com/docDetails")
             .then((res) => {
                 let data = res.data;
                 let filterData = data.filter((temp) => temp.verified == false);

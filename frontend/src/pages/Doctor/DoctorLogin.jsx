@@ -23,7 +23,7 @@ const DoctorLogin = () => {
   const handleDoctorLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/docauth/doclogin", {
+      const response = await fetch("https://virtualdoctorapp-backend.onrender.com/docauth/doclogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -53,7 +53,7 @@ const Prescription = () => {
             console.log(date);
             console.log(time);
             console.log(advice);
-            axios.post("http://localhost:5000/pres/addPrescription",{name,email,doctorName,doctorEmail,date,time,prescription,advice})
+            axios.post("https://virtualdoctorapp-backend.onrender.com/pres/addPrescription",{name,email,doctorName,doctorEmail,date,time,prescription,advice})
             .then((res)=>{
                 // alert(res.data)
                 // console.log(res.data)
