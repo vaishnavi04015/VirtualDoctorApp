@@ -12,7 +12,8 @@ import { PiPrescription } from 'react-icons/pi';
 function About() {
   return (
     <div>
-      <div className='w-full h-[500px] bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_500px]'>
+      <div className='w-full h-[500px] bg-[url("https://www.att.com/scmsassets/upper_funnel/wireless/2000240_-base-hero-bestdeal-tbl-retina.jpg")] bg-[length:100%_500px]'>
+      {/* <div className='w-full h-[500px] bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_500px]'> */}
         {/* <img src="https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png" className='w-full h-96'/> */}
         <div className="absolute top-44 left-[3%] ">
           <span className="text-5xl">Skip the travel!</span>
