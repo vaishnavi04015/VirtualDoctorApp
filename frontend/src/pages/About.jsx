@@ -12,7 +12,7 @@ import { PiPrescription } from 'react-icons/pi';
 function About() {
   return (
     <div>
-      <div className='w-full h-[500px] bg-[url("https://www.att.com/scmsassets/upper_funnel/wireless/2000240_-base-hero-bestdeal-tbl-retina.jpg")] bg-[length:100%_500px]'>
+      <div className='w-full h-[550px] bg-[url("https://www.att.com/scmsassets/upper_funnel/wireless/2000240_-base-hero-bestdeal-tbl-retina.jpg")] bg-[length:100%_550px]'>
       {/* <div className='w-full h-[500px] bg-[url("https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png")] bg-[length:100%_500px]'> */}
         {/* <img src="https://www.golevelone.com/wp-content/uploads/slider8/slide-2.png" className='w-full h-96'/> */}
         <div className="absolute top-44 left-[3%] ">
@@ -140,26 +140,26 @@ function About() {
                   size={70}
                   className=" bg-gray-200 rounded-full p-4 ml-14"
                 />
-                <hr className="border-gray-200 mt-9 border-2 w-24 " />
+                <hr className="border-gray-200 mt-9 border-2 w-[50%] " />
               </div>
               <p className="mt-4">Select a speciality or symptom</p>
             </div>
-            <hr className="border-gray-200 mt-9 border-2 w-52 " />
+            <hr className="border-gray-200 mt-9 border-2 w-[20%] " />
             <div>
               <div className="flex">
-                <hr className="border-gray-200 mt-9 border-2 w-28 " />
+                <hr className="border-gray-200 mt-9 border-2 w-[60%] " />
                 <GoCommentDiscussion
                   size={70}
                   className=" bg-gray-200 rounded-full p-4"
                 />
-                <hr className="border-gray-200 mt-9 border-2 w-24 " />
+                <hr className="border-gray-200 mt-9 border-2 w-[50%] " />
               </div>
               <p className="mt-4">Audio/ video call with a verified doctor</p>
             </div>
-            <hr className="border-gray-200 mt-9 border-2 w-52 " />
+            <hr className="border-gray-200 mt-9 border-2 w-[20%] " />
             <div>
               <div className="flex">
-                <hr className="border-gray-200 mt-9 border-2 w-24 " />
+                <hr className="border-gray-200 mt-9 border-2 w-[50%] " />
                 <PiPrescription
                   size={70}
                   className=" bg-gray-200 rounded-full p-4"
